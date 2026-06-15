@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giomar Huacho | Portafolio Personal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="water-effect">
+
+    <div class="ripple-background"></div>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">GJC</h1>
+            <nav class="nav">
+    <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="cv.html">Curriculum</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+            </nav>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="title-main reveal">Giomar Huacho</h1>
+            <p class="subtitle-main reveal" style="transition-delay: 0.2s;">PORTAFOLIO PERSONAL</p>
+        </div>
+    </main>
+
+    <section class="profile-section">
+        <div class="glass-box about-box reveal">
+            <div class="photo-box">
+                <img src="Giomar123.jpg" alt="Foto de Giomar">
+            </div>
+            <div class="cv-text">
+                <h2>Sobre mí</h2>
+                <p>¡Hola! Soy estudiante de primer año de Sistemas Microinformáticos y Redes (SMIX) en el Instituto Provençana. Me considero una persona proactiva, analítica y profundamente autodidacta.</p>
+                <p>Mis áreas de mayor interés son la administración de sistemas operativos y la arquitectura de redes, destacando en el diseño, segmentación y resolución de incidencias en entornos Cisco. Disfruto enfrentándome a retos técnicos complejos y optimizando la infraestructura para garantizar la máxima eficiencia.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer"><p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p></footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script>
+        $(document).ready(function() { 
+            var $water = $('.ripple-background');
+            
+            // 1. INICIALIZAR EL AGUA HD
+            try {
+                $water.ripples({ 
+                    resolution: 256, 
+                    dropRadius: 20, 
+                    perturbance: 0.02, 
+                    interactive: false 
+                }); 
+            } catch (e) { console.log(e); }
+            
+            // 2. MOTOR DE AGUA FLUIDO (CON ESCUDO PARA TU NOMBRE xd)
+            let isRippling = false;
+
+            $('body').on('mousemove mousedown', function(e) { 
+                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
+
+                // 🔥 EL ESCUDO: Aquí bloqueamos las cajas y también tu título (.hero-content) 🔥
+                if ($(e.target).closest('.navbar, .glass-box, .hero-content, .main-footer, .cv-header, .portfolio-header').length) return;
+
+                if (!isRippling) {
+                    isRippling = true;
+                    requestAnimationFrame(() => {
+                        var radius = (e.type === 'mousedown') ? 35 : 15;
+                        var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
+                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        isRippling = false;
+                    });
+                }
+            });
+
+            // 3. TRANSICIONES Y ANIMACIONES (¡ESTÁN DE VUELTA! xd)
+            $('.nav a').on('click', function(e) {
+                e.preventDefault(); 
+                const targetUrl = $(this).attr('href');
+                $('body').addClass('page-exit'); 
+                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+            });
+
+            // Este es el motor que hace que las cosas aparezcan al hacer scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+        });
+
+        function copiarCorreo() {
+            if(navigator.clipboard) {
+                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(() => {
+                    const btn = document.getElementById("btn-copy");
+                    if(btn) {
+                        btn.innerHTML = "¡Copiado con éxito!";
+                        btn.style.background = "#00ffff";
+                        btn.style.color = "#000000";
+                        setTimeout(() => {
+                            btn.innerHTML = "Copiar al portapapeles";
+                            btn.style.background = "rgba(0, 255, 255, 0.15)";
+                            btn.style.color = "#00ffff";
+                        }, 2500);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

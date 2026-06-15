@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Proyectos | Giomar Huacho</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        html { background-color: #050b14 !important; }
+        body { animation: none !important; background-color: transparent !important; }
+        main { animation: pageFadeIn 0.8s ease-out forwards; }
+        .ripple-background {
+            position: fixed !important; top: 0 !important; left: 0 !important;
+            width: 100vw !important; height: 100vh !important; z-index: -2 !important;
+            background-size: cover !important; 
+            background-position: top center !important; /* LO AMARILLO xd */
+        }
+    </style>
+</head>
+<body class="water-effect">
+
+    <div class="ripple-background"></div>
+    
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">GJC</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">Curriculum</a></li>
+                    <li><a href="portafolio.html" class="active">Portafolio</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="portfolio-main-container">
+        <div class="portfolio-header reveal">
+            <h1 style="font-size: 3rem; margin-bottom: 10px; color: #00ffff; text-shadow: 0 0 20px rgba(0,255,255,0.3);">Mis Proyectos</h1>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">Proyectos de aprendizaje personales</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="glass-box portfolio-card reveal" style="padding: 0; margin-bottom: 20px;">
+                <div class="project-image-container">
+                    <img src="Fotodeincio.png" alt="Portafolio Web" class="project-image">
+                </div>
+                <div class="project-info-bottom">
+                    <h2 style="color: #00ffff; margin-bottom: 10px;">Despliegue de Portafolio Web</h2>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">FRONTEND</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Diseño, desarrollo y publicación de mi propio entorno web personal enfocado a la administración de sistemas, utilizando tecnologías web limpias.</p>
+                        <p>Implementación de un diseño inmersivo transparente, animaciones interactivas fluidas y despliegue automatizado.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-box portfolio-card reveal" style="padding: 0; margin-bottom: 20px;">
+                <div class="project-image-container">
+                    <img src="Clementine1.png" alt="Clementine IA" class="project-image">
+                </div>
+                <div class="project-info-bottom">
+                    <h2 style="color: #00ffff; margin-bottom: 10px;">Clementine - Agente IA</h2>
+                    <div class="project-tags">
+                        <span class="tag">PYTHON</span>
+                        <span class="tag">OLLAMA (LLM)</span>
+                        <span class="tag">SUPABASE</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Desarrollo y programación de un asistente virtual interactivo impulsado por Inteligencia Artificial y motores LLM de ejecución local.</p>
+                        <p>El sistema cuenta con una arquitectura avanzada que integra sincronización de memoria en la nube y capacidades de razonamiento técnico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer"><p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p></footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script>
+        $(document).ready(function() { 
+            var $water = $('.ripple-background');
+            try { $water.ripples({ resolution: 256, dropRadius: 20, perturbance: 0.02, interactive: false }); } catch (e) { console.log(e); }
+            
+            let isRippling = false;
+            $('body').on('mousemove mousedown', function(e) { 
+                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
+                
+                // 🔥 EL ESCUDO: Ignora las cajas de proyectos y la navbar 🔥
+                if ($(e.target).closest('.navbar, .glass-box, .portfolio-card, .portfolio-header, .main-footer').length) return;
+                
+                if (!isRippling) {
+                    isRippling = true;
+                    requestAnimationFrame(() => {
+                        var radius = (e.type === 'mousedown') ? 35 : 15;
+                        var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
+                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        isRippling = false;
+                    });
+                }
+            });
+            
+            $('.nav a').on('click', function(e) {
+                e.preventDefault(); 
+                const targetUrl = $(this).attr('href');
+                $('body').addClass('page-exit'); 
+                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

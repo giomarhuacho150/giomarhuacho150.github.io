@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Giomar Huacho</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        html { background-color: #050b14 !important; }
+        body { animation: none !important; background-color: transparent !important; }
+        main { animation: pageFadeIn 0.8s ease-out forwards; }
+        .ripple-background {
+            position: fixed !important; top: 0 !important; left: 0 !important;
+            width: 100vw !important; height: 100vh !important; z-index: -2 !important;
+            background-size: cover !important; 
+            background-position: top center !important; /* LO AMARILLO xd */
+        }
+    </style>
+</head>
+<body class="water-effect">
+
+    <div class="ripple-background"></div>
+    
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">GJC</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">Curriculum</a></li>
+                    <li><a href="portafolio.html">Portafolio</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-main">
+        <div class="contact-inner reveal-scale" style="background: transparent !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0,255,255,0.2); max-width: 800px; width: 100%; padding: 60px; border-radius: 24px; text-align: center; box-shadow: none !important;">
+            
+            <h2 style="font-size: 3.5rem; letter-spacing: -1px; color: #00ffff; text-shadow: 0 0 15px rgba(0,255,255,0.4); margin-bottom: 15px;">¡Hola!</h2>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.15rem; margin-bottom: 10px;">Escribeme si quieres hablar o simplemente jugar a algo</p>
+            
+            <div class="email-box-premium reveal-left">
+                <span class="email-text" id="correo-texto">giomarhuacho150@gmail.com</span>
+                <i class="fas fa-envelope email-icon"></i>
+            </div>
+            
+            <div class="social-links reveal-right">
+                <a href="https://discord.gg/qevqfugp" target="_blank" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://youtube.com/@giomarhuacho?si=Xm6kuplZoX2or1DK" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/yommy_dun?igsh=MWRhcjRtMnF2Ym5rNg==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+34656309215" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="btn-group reveal">
+                <button id="btn-copy" onclick="copiarCorreo()" class="btn-action primary">Copiar al portapapeles</button>
+                <a href="https://github.com/giomarhuacho150" target="_blank" class="btn-action">Visitar mi GitHub</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer" style="position: absolute; bottom: 0; width: 100%;"><p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p></footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script>
+        $(document).ready(function() { 
+            var $water = $('.ripple-background');
+            try { $water.ripples({ resolution: 256, dropRadius: 20, perturbance: 0.02, interactive: false }); } catch (e) { console.log(e); }
+            
+            let isRippling = false;
+            $('body').on('mousemove mousedown', function(e) { 
+                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
+                
+                // 🔥 EL ESCUDO 🔥
+                if ($(e.target).closest('.navbar, .contact-inner, .main-footer').length) return;
+                
+                if (!isRippling) {
+                    isRippling = true;
+                    requestAnimationFrame(() => {
+                        var radius = (e.type === 'mousedown') ? 35 : 15;
+                        var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
+                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        isRippling = false;
+                    });
+                }
+            });
+            
+            $('.nav a').on('click', function(e) {
+                e.preventDefault(); 
+                const targetUrl = $(this).attr('href');
+                $('body').addClass('page-exit'); 
+                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+        });
+
+        function copiarCorreo() {
+            if(navigator.clipboard) {
+                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(() => {
+                    const btn = document.getElementById("btn-copy");
+                    if(btn) {
+                        btn.innerHTML = "¡Copiado con éxito!";
+                        btn.style.background = "#00ffff";
+                        btn.style.color = "#000000";
+                        setTimeout(() => {
+                            btn.innerHTML = "Copiar al portapapeles";
+                            btn.style.background = "rgba(0, 255, 255, 0.15)";
+                            btn.style.color = "#00ffff";
+                        }, 2500);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
