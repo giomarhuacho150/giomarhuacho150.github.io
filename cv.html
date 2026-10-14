@@ -3,21 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Currículum Vitae de Giomar Huacho - Sistemas Microinformáticos y Redes.">
     <title>Currículum | Giomar Huacho</title>
+    
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        html { background-color: #050b14 !important; }
-        body { animation: none !important; background-color: transparent !important; }
-        main { animation: pageFadeIn 0.8s ease-out forwards; }
+        /* 🔥 BASE Y FONDO CIAN IDÉNTICO AL INDEX 🔥 */
+        html { 
+            background-color: #04121c !important; 
+            scroll-behavior: smooth;
+        }
+        body { 
+            animation: none !important; 
+            background-color: transparent !important; 
+        }
+        main { 
+            animation: pageFadeIn 0.8s ease-out forwards; 
+        }
+        
         .ripple-background {
-            position: fixed !important; top: 0 !important; left: 0 !important;
-            width: 100vw !important; height: 100vh !important; z-index: -2 !important;
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important;
+            width: 100vw !important; 
+            height: 100vh !important; 
+            z-index: -2 !important;
+            background-image: url('FONDO.jpg') !important;
             background-size: cover !important; 
-            /* 🔥 AQUÍ ESTÁ LA MAGIA PARA VER LA PARTE SUPERIOR (LO AMARILLO) 🔥 */
-            background-position: top center !important; 
+            background-position: center center !important; 
+            pointer-events: none !important; 
+        }
+
+        /* =========================================================
+           1. NAVBAR CON LOGO GSC Y ANIMACIÓN IGUAL AL INDEX
+           ========================================================= */
+        .logo {
+            color: #ffffff !important;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.85),
+                0 0 20px rgba(0, 215, 255, 0.5) !important;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 
+                0 0 14px #00ffff,
+                0 0 28px #00d9ff !important;
+        }
+
+        .nav ul li a {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.3s ease, text-shadow 0.3s ease !important;
+        }
+
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 100%;
+            height: 2.5px;
+            background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+            border-radius: 4px;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav ul li a:hover::after,
+        .nav ul li a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav ul li a:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+        }
+
+        /* =========================================================
+           2. TÍTULO CON LA MISMA LETRA, NEÓN CIAN Y HOVER DE INDEX
+           ========================================================= */
+        .cv-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 35px;
+            animation: gentleFloat 4.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-7px); }
+        }
+
+        .cv-header .title-main {
+            font-family: 'Pacifico', cursive !important;
+            font-weight: 400 !important;
+            font-size: clamp(3rem, 5.5vw, 4.5rem) !important;
+            color: #ffffff !important;
+            -webkit-text-stroke: 0px transparent !important;
+            text-align: center !important;
+            margin: 0 auto !important;
+            /* Contorno neón cian limpio por fuera sin cortar las letras */
+            text-shadow: 
+                0 0 6px #00ffff,
+                0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 28px rgba(0, 230, 255, 0.75),
+                0 0 50px rgba(0, 195, 255, 0.5),
+                0 4px 12px rgba(0, 0, 0, 0.30) !important;
+            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.45));
+            transition: transform 0.35s ease, text-shadow 0.35s ease, filter 0.35s ease;
+        }
+
+        /* Animación al pasar el cursor idéntica a tu index */
+        .cv-header .title-main:hover {
+            transform: scale(1.03);
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 22px #00ffff,
+                0 0 42px rgba(0, 225, 255, 0.9),
+                0 0 70px rgba(0, 195, 255, 0.65) !important;
+            filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.75));
+        }
+
+        .cv-header .subtitle-main {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: 0.95rem !important;
+            letter-spacing: 5px !important;
+            padding-left: 5px !important;
+            margin: 10px auto 0 auto !important;
+            text-align: center !important;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 8px rgba(0, 245, 255, 0.65),
+                0 0 18px rgba(0, 210, 255, 0.35),
+                0 2px 6px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* =========================================================
+           3. TARJETA DE CRISTAL CIAN TRANSPARENTE CON ANIMACIÓN HOVER
+           ========================================================= */
+        .cv-glass-card {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(6, 28, 42, 0.32) 50%,
+                rgba(0, 215, 255, 0.08) 100%
+            ) !important;
+            backdrop-filter: blur(18px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+            border: 1px solid rgba(0, 255, 255, 0.28) !important;
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(0, 255, 255, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+            border-radius: 24px !important;
+            padding: 38px !important;
+            max-width: 950px;
+            width: 92%;
+            text-align: center;
+            margin-bottom: 60px;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+        }
+
+        .cv-glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 255, 0.55) !important;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.55),
+                0 0 35px rgba(0, 255, 255, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+        }
+
+        /* Visor de la imagen de tu CV */
+        .cv-image-box {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 32px;
+        }
+        .cv-image-box:hover {
+            transform: translateY(-4px) scale(1.005);
+            border-color: #00ffff;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 255, 0.22);
+        }
+        .cv-image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =========================================================
+           4. BOTÓN DE DESCARGA PDF TRANSPARENTE CON NEÓN CIAN
+           ========================================================= */
+        .btn-download-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 14px 38px;
+            border-radius: 999px;
+            background: transparent !important;
+            color: #00ffff !important;
+            border: 1px solid rgba(0, 255, 255, 0.6) !important;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(0, 255, 255, 0.15);
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .btn-download-cv i {
+            color: #00ffff;
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.7));
+            transition: transform 0.3s ease;
+        }
+
+        .btn-download-cv:hover {
+            background: rgba(0, 255, 255, 0.12) !important;
+            border-color: #00ffff !important;
+            color: #ffffff !important;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 255, 255, 0.45);
+        }
+
+        .btn-download-cv:hover i {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        /* =========================================================
+           5. BOTÓN DE AGUA 100% TRANSPARENTE A LA DERECHA
+           ========================================================= */
+        .water-pill-btn {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 2000;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            height: 36px;
+            padding: 0 15px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .water-pill-btn:hover {
+            background: rgba(0, 255, 255, 0.1) !important;
+            border-color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00ffff;
+            box-shadow: 0 0 8px #00ffff;
+        }
+        .water-pill-btn.off {
+            opacity: 0.5;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .water-pill-btn.off .status-dot {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: none;
         }
     </style>
 </head>
@@ -25,9 +294,15 @@
 
     <div class="ripple-background"></div>
 
+    <!-- Botón transparente a la derecha para el agua -->
+    <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
+        <span class="status-dot"></span>
+        <span class="water-label">Agua</span>
+    </button>
+
     <header class="navbar">
         <div class="navbar-content">
-            <h1 class="logo">GJC</h1>
+            <h1 class="logo">GSC</h1>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -39,67 +314,27 @@
         </div>
     </header>
 
-    <main class="cv-main-container">
-        <div class="glass-box cv-box reveal-scale">
-            <div class="cv-header">
-                <h1 style="font-size: 3rem; margin-bottom: 10px;">Giomar Huacho</h1>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Estudiante de Sistemas Microinformáticos y Redes | giomarhuacho150@gmail.com</p>
-            </div>
+    <main class="cv-main-container" style="padding-top: 125px; display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
+        
+        <div class="cv-header reveal">
+            <h1 class="title-main">Mi Currículum</h1>
+            <p class="subtitle-main">VISUALIZA O DESCARGA MI PERFIL PROFESIONAL</p>
+        </div>
+
+        <div class="glass-box cv-glass-card reveal-scale">
             
-            <div class="cv-section reveal-left">
-                <h3>Perfil Profesional</h3>
-                <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1.05rem;">Mi objetivo es aportar valor a un equipo técnico mientras desarrollo mis Prácticas Obligatorias (FCT). Destaco por mi mentalidad resolutiva, capacidad de aprendizaje autónomo y gran pasión por el mantenimiento de hardware de alto rendimiento, configuración de redes y administración de sistemas.</p>
-            </div>
-            
-            <div class="cv-section reveal-right">
-                <h3>Trayectoria</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>CFGM Sistemas Microinformáticos y Redes (SMIX)</h4>
-                        <span class="date">Instituto Provençana | 2025 - Presente</span>
-                        <p>Formación integral en administración de sistemas operativos, seguridad informática y despliegue de redes locales.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cv-section reveal-left">
-                <h3>Insignias Oficiales</h3>
-                <div class="badge-grid">
-                    <div class="badge-box">
-                        <img src="Insignia.png" alt="Insignia Cisco" class="badge-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/1200px-Cisco_logo_blue_2016.svg.png'">
-                        <div class="badge-title">Networking Academy</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cv-section reveal-scale">
-                <h3>Competencias Técnicas</h3>
-                <div class="cv-grid-2col">
-                    <div class="cv-item reveal-left">
-                        <h4>Infraestructura y Redes</h4>
-                        <p>Diseño en Cisco Packet Tracer. Resolución de incidencias, enrutamiento estático y VLANs (Nota: 9.76/10).</p>
-                    </div>
-                    <div class="cv-item reveal-right">
-                        <h4>Hardware y Rendimiento</h4>
-                        <p>Montaje, diagnóstico de componentes y monitorización activa para prevenir fallos térmicos.</p>
-                    </div>
-                    <div class="cv-item reveal-left">
-                        <h4>Administración de Sistemas</h4>
-                        <p>Gestión de permisos de usuario y manejo avanzado de consola/terminal en sistemas locales.</p>
-                    </div>
-                    <div class="cv-item reveal-right">
-                        <h4>Estructuración de Datos</h4>
-                        <p>Diseño de bases de datos relacionales, consultas cruzadas y creación de formularios.</p>
-                    </div>
-                </div>
+            <!-- EL VISOR DE TU CV EN IMAGEN -->
+            <div class="cv-image-box">
+                <img src="CV_Giomar.jpg" alt="Currículum de Giomar Huacho">
             </div>
 
-            <div class="cv-section reveal-scale" style="margin-top: 60px; margin-bottom: 40px; text-align: center;">
-                <h3 style="margin-bottom: 30px;">Certificación Oficial</h3>
-                <div style="display: flex; justify-content: center;">
-                    <img src="Certificado.jpg" alt="Certificado CCNA Cisco" style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
+            <!-- BOTÓN DE DESCARGA PDF TRANSPARENTE CON LETRA CIAN -->
+            <div class="btn-group" style="display: flex; justify-content: center;">
+                <a href="CV_Giomar.pdf" download class="btn-download-cv">
+                    <i class="fas fa-file-pdf"></i> Descargar CV en PDF
+                </a>
             </div>
+            
         </div>
     </main>
 
@@ -108,39 +343,79 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
     <script>
-        $(document).ready(function() { 
-            var $water = $('.ripple-background');
-            try { $water.ripples({ resolution: 256, dropRadius: 20, perturbance: 0.02, interactive: false }); } catch (e) { console.log(e); }
+        jQuery(document).ready(function() { 
+            var water = jQuery('.ripple-background');
+            var waterEnabled = localStorage.getItem('waterEffect') !== 'off';
             
-            let isRippling = false;
-            $('body').on('mousemove mousedown', function(e) { 
-                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
+            function initWater() {
+                try { 
+                    water.ripples({ resolution: 512, dropRadius: 20, perturbance: 0.04, interactive: false }); 
+                } catch (e) { console.log(e); }
+            }
+
+            if (waterEnabled) {
+                initWater();
+            } else {
+                jQuery('#toggle-water').addClass('off').find('.water-label').text('Off');
+            }
+            
+            jQuery(window).on('resize', function() { 
+                if (waterEnabled) {
+                    try { water.ripples('updateSize'); } catch (e) {}
+                }
+            });
+
+            jQuery('#toggle-water').on('click', function() {
+                waterEnabled = !waterEnabled;
+                if (!waterEnabled) {
+                    localStorage.setItem('waterEffect', 'off');
+                    try { water.ripples('destroy'); } catch(e) {}
+                    jQuery(this).addClass('off').find('.water-label').text('Off');
+                } else {
+                    localStorage.setItem('waterEffect', 'on');
+                    initWater();
+                    jQuery(this).removeClass('off').find('.water-label').text('Agua');
+                }
+            });
+            
+            var isRippling = false;
+            jQuery('body').on('mousemove mousedown', function(e) { 
+                if (!waterEnabled) return;
+                if (e.type === 'mousedown' && jQuery(e.target).closest('a, button, .btn-download-cv, .water-pill-btn').length) return;
                 
-                // 🔥 EL ESCUDO HA VUELTO: Copiado de tu index.html. Ignora cajas y barras 🔥
-                if ($(e.target).closest('.navbar, .glass-box, .cv-header, .main-footer').length) return;
+                // ESCUDO
+                if (jQuery(e.target).closest('.navbar, .glass-box, .cv-header, .main-footer, .water-pill-btn').length) return;
                 
                 if (!isRippling) {
                     isRippling = true;
-                    requestAnimationFrame(() => {
+                    requestAnimationFrame(function() {
                         var radius = (e.type === 'mousedown') ? 35 : 15;
                         var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
-                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
                         isRippling = false;
                     });
                 }
             });
             
-            $('.nav a').on('click', function(e) {
+            jQuery('.nav a').on('click', function(e) {
+                if (jQuery(this).attr('target') === '_blank') return;
+                if (jQuery(this).attr('download') !== undefined) return;
+                if (jQuery(this).hasClass('active')) return;
                 e.preventDefault(); 
-                const targetUrl = $(this).attr('href');
-                $('body').addClass('page-exit'); 
-                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+                var targetUrl = jQuery(this).attr('href');
+                jQuery('body').addClass('page-exit'); 
+                setTimeout(function() { window.location.href = targetUrl; }, 300); 
             });
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) { 
+                    if (entry.isIntersecting) entry.target.classList.add('active'); 
+                });
             }, { threshold: 0.15 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                observer.observe(el);
+            });
         });
     </script>
 </body>

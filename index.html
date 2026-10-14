@@ -3,25 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Portafolio personal de Giomar Huacho, estudiante de Sistemas Microinformáticos y Redes.">
+    <meta property="og:title" content="Giomar Huacho | Portafolio Personal">
+    <meta property="og:description" content="Especialista en redes, hardware y sistemas. SMIX.">
+    
     <title>Giomar Huacho | Portafolio Personal</title>
+    
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 🔥 BASE Y FONDO CIAN ORIGINAL 🔥 */
+        html { 
+            background-color: #04121c !important; 
+            scroll-behavior: smooth;
+        }
+        body { 
+            animation: none !important; 
+            background-color: transparent !important; 
+        }
+        
+        main, .profile-section, .dino-section { 
+            animation: pageFadeIn 0.8s ease-out forwards; 
+        }
+
+        .ripple-background {
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important;
+            width: 100vw !important; 
+            height: 100vh !important; 
+            z-index: -2 !important;
+            background-image: url('FONDO.jpg') !important;
+            background-size: cover !important; 
+            background-position: center center !important; 
+            pointer-events: none !important; 
+        }
+
+        /* =========================================================
+           1. NAVBAR CON SU DEGRADADO TRANSPARENTE + BARRA INFERIOR
+           ========================================================= */
+        .logo {
+            color: #ffffff !important;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.85),
+                0 0 20px rgba(0, 215, 255, 0.5) !important;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 
+                0 0 14px #00ffff,
+                0 0 28px #00d9ff !important;
+        }
+
+        .nav ul li a {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.3s ease, text-shadow 0.3s ease !important;
+        }
+
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 100%;
+            height: 2.5px;
+            background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+            border-radius: 4px;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav ul li a:hover::after,
+        .nav ul li a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav ul li a:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+        }
+
+        /* =========================================================
+           2. PORTADA CON TU LETRA CURSIVA Y NEÓN CIAN
+           ========================================================= */
+        .hero {
+            position: relative;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: gentleFloat 4.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-7px); }
+        }
+
+        .title-main {
+            font-family: 'Pacifico', cursive !important;
+            font-weight: 400 !important;
+            color: #ffffff !important;
+            text-align: center !important;
+            margin: 0 auto !important;
+            text-shadow: 
+                0 0 7px rgba(0, 255, 255, 0.95),
+                0 0 16px rgba(0, 240, 255, 0.80),
+                0 0 32px rgba(0, 215, 255, 0.60),
+                0 0 55px rgba(0, 185, 255, 0.40),
+                0 4px 12px rgba(0, 0, 0, 0.30) !important;
+            transition: transform 0.35s ease, text-shadow 0.35s ease;
+        }
+
+        .title-main:hover {
+            transform: scale(1.02);
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 22px #00ffff,
+                0 0 42px rgba(0, 225, 255, 0.8),
+                0 0 70px rgba(0, 195, 255, 0.55) !important;
+        }
+
+        .subtitle-main {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            letter-spacing: 5px !important;
+            padding-left: 5px !important;
+            margin: 10px auto 0 auto !important;
+            text-align: center !important;
+            text-shadow: 
+                0 0 8px rgba(0, 245, 255, 0.65),
+                0 0 18px rgba(0, 210, 255, 0.35),
+                0 2px 6px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* =========================================================
+           3. BOTÓN "EXPLORAR" CON FONDO 100% TRANSPARENTE
+           ========================================================= */
+        .scroll-explore-btn {
+            position: absolute;
+            bottom: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .explore-pill {
+            padding: 8px 22px;
+            padding-left: 25px;
+            border-radius: 999px;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            transition: all 0.35s ease;
+        }
+
+        .explore-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 0.5;
+            font-size: 0.85rem;
+            color: #00ffff;
+            animation: arrowFloat 1.8s infinite ease-in-out;
+        }
+        .explore-arrows i:nth-child(2) {
+            opacity: 0.5;
+        }
+
+        .scroll-explore-btn:hover .explore-pill {
+            background: rgba(0, 255, 255, 0.1) !important;
+            border-color: #00ffff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.35);
+        }
+
+        @keyframes arrowFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* =========================================================
+           4. TARJETAS DE CRISTAL CIAN TRANSPARENTE (ADIÓS MARRÓN)
+           ========================================================= */
+        .about-box,
+        .dino-card {
+            /* Cristal limpio que deja pasar el color turquesa del fondo */
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(6, 28, 42, 0.32) 50%,
+                rgba(0, 215, 255, 0.08) 100%
+            ) !important;
+            backdrop-filter: blur(18px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+            border: 1px solid rgba(0, 255, 255, 0.28) !important;
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(0, 255, 255, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+            border-radius: 24px !important;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+        }
+
+        .about-box:hover,
+        .dino-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 255, 0.55) !important;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(0, 255, 255, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+        }
+
+        /* Quitamos el marco gris/marrón de la foto para que quede limpia */
+        .photo-box {
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .photo-box img {
+            border-radius: 18px !important;
+            border: 1px solid rgba(0, 255, 255, 0.35) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 255, 255, 0.15) !important;
+            transition: transform 0.4s ease, border-color 0.4s ease !important;
+        }
+
+        .about-box:hover .photo-box img {
+            transform: scale(1.02);
+            border-color: #00ffff !important;
+        }
+
+        .about-box h2 {
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            text-shadow: 
+                0 0 12px rgba(0, 255, 255, 0.5),
+                0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .about-box p {
+            color: rgba(255, 255, 255, 0.92) !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* =========================================================
+           5. MINIJUEGO DINO RUNNER INTEGRADO EN CRISTAL TRANSPARENTE
+           ========================================================= */
+        .dino-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px 80px 20px;
+        }
+
+        .dino-card {
+            max-width: 900px;
+            width: 100%;
+            padding: 28px 34px;
+            text-align: center;
+        }
+
+        .dino-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .dino-title {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.45);
+        }
+
+        .dino-score-board {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .dino-canvas-wrapper {
+            position: relative;
+            width: 100%;
+            background: rgba(0, 15, 25, 0.15);
+            border: 1px solid rgba(0, 255, 255, 0.22);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #dinoCanvas {
+            width: 100%;
+            height: 180px;
+            display: block;
+        }
+
+        .dino-hint {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.82rem;
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        /* =========================================================
+           6. BOTÓN DE AGUA 100% TRANSPARENTE A LA DERECHA
+           ========================================================= */
+        .water-pill-btn {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 2000;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            height: 36px;
+            padding: 0 15px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .water-pill-btn:hover {
+            background: rgba(0, 255, 255, 0.1) !important;
+            border-color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00ffff;
+            box-shadow: 0 0 8px #00ffff;
+        }
+        .water-pill-btn.off {
+            opacity: 0.5;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .water-pill-btn.off .status-dot {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: none;
+        }
+    </style>
 </head>
 
 <body class="water-effect">
 
     <div class="ripple-background"></div>
 
+    <!-- Botón transparente a la derecha para el agua -->
+    <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
+        <span class="status-dot"></span>
+        <span class="water-label">Agua</span>
+    </button>
+
     <header class="navbar">
         <div class="navbar-content">
-            <h1 class="logo">GJC</h1>
+            <h1 class="logo">GSC</h1>
             <nav class="nav">
-    <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="cv.html">Curriculum</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-</nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="cv.html">Curriculum</a></li>
+                    <li><a href="portafolio.html">Portafolio</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -31,18 +425,45 @@
             <h1 class="title-main reveal">Giomar Huacho</h1>
             <p class="subtitle-main reveal" style="transition-delay: 0.2s;">PORTAFOLIO PERSONAL</p>
         </div>
+
+        <a href="#sobre-mi" class="scroll-explore-btn">
+            <span class="explore-pill">Explorar</span>
+            <span class="explore-arrows">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down"></i>
+            </span>
+        </a>
     </main>
 
-    <section class="profile-section">
+    <!-- TARJETA SOBRE MÍ EN CRISTAL CIAN TRANSPARENTE -->
+    <section id="sobre-mi" class="profile-section" style="padding-bottom: 35px;">
         <div class="glass-box about-box reveal">
             <div class="photo-box">
                 <img src="Giomar123.jpg" alt="Foto de Giomar">
             </div>
             <div class="cv-text">
                 <h2>Sobre mí</h2>
-                <p>¡Hola! Soy estudiante de primer año de Sistemas Microinformáticos y Redes (SMIX) en el Instituto Provençana. Me considero una persona proactiva, analítica y profundamente autodidacta.</p>
-                <p>Mis áreas de mayor interés son la administración de sistemas operativos y la arquitectura de redes, destacando en el diseño, segmentación y resolución de incidencias en entornos Cisco. Disfruto enfrentándome a retos técnicos complejos y optimizando la infraestructura para garantizar la máxima eficiencia.</p>
+                <p>¡Hola! Soy estudiante de Sistemas Microinformáticos y Redes (SMIX) en el Instituto Provençana. Me considero una persona proactiva, analítica y profundamente autodidacta.</p>
+                <p>Mis áreas de mayor interés son la administración de sistemas operativos, el diagnóstico de hardware y la arquitectura de redes, destacando en el diseño, segmentación y resolución de incidencias en entornos Cisco y Linux. Disfruto enfrentándome a retos técnicos complejos y optimizando la infraestructura para garantizar la máxima eficiencia.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- MINIJUEGO DINO RUNNER EN CRISTAL CIAN TRANSPARENTE -->
+    <section class="dino-section">
+        <div class="glass-box dino-card reveal">
+            <div class="dino-header">
+                <h3 class="dino-title"><i class="fas fa-gamepad" style="color: #00ffff;"></i> Dino Runner</h3>
+                <div class="dino-score-board">
+                    PUNTOS: <span id="dinoScore">0000</span> &nbsp;|&nbsp; RÉCORD: <span id="dinoHigh">0000</span>
+                </div>
+            </div>
+            
+            <div class="dino-canvas-wrapper" id="dinoBox">
+                <canvas id="dinoCanvas" width="820" height="180"></canvas>
+            </div>
+            
+            <p class="dino-hint">Pulsa <strong>Espacio</strong> o haz <strong>Clic</strong> dentro del cuadro para saltar</p>
         </div>
     </section>
 
@@ -50,86 +471,293 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    
     <script>
-        $(document).ready(function() { 
-            var $water = $('.ripple-background');
-            
-            // 1. INICIALIZAR EL AGUA HD
-            try {
-                $water.ripples({ 
-                    resolution: 256, 
-                    dropRadius: 20, 
-                    perturbance: 0.02, 
-                    interactive: false 
-                }); 
-            } catch (e) { console.log(e); }
-            
-            // 2. MOTOR DE AGUA FLUIDO (CON ESCUDO PARA TU NOMBRE xd)
-            let isRippling = false;
+        jQuery(document).ready(function() { 
+            var water = jQuery('.ripple-background');
+            var waterEnabled = localStorage.getItem('waterEffect') !== 'off';
 
-            $('body').on('mousemove mousedown', function(e) { 
-                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
+            function initWater() {
+                try {
+                    water.ripples({ 
+                        resolution: 512, 
+                        dropRadius: 20, 
+                        perturbance: 0.04, 
+                        interactive: false 
+                    }); 
+                } catch (e) { console.log(e); }
+            }
 
-                // 🔥 EL ESCUDO: Aquí bloqueamos las cajas y también tu título (.hero-content) 🔥
-                if ($(e.target).closest('.navbar, .glass-box, .hero-content, .main-footer, .cv-header, .portfolio-header').length) return;
+            if (waterEnabled) {
+                initWater();
+            } else {
+                jQuery('#toggle-water').addClass('off').find('.water-label').text('Off');
+            }
+            
+            jQuery(window).on('resize', function() {
+                if (waterEnabled) {
+                    try { water.ripples('updateSize'); } catch (e) {}
+                }
+            });
+
+            jQuery('#toggle-water').on('click', function() {
+                waterEnabled = !waterEnabled;
+                if (!waterEnabled) {
+                    localStorage.setItem('waterEffect', 'off');
+                    try { water.ripples('destroy'); } catch(e) {}
+                    jQuery(this).addClass('off').find('.water-label').text('Off');
+                } else {
+                    localStorage.setItem('waterEffect', 'on');
+                    initWater();
+                    jQuery(this).removeClass('off').find('.water-label').text('Agua');
+                }
+            });
+
+            var isRippling = false;
+
+            jQuery('body').on('mousemove mousedown', function(e) { 
+                if (!waterEnabled) return;
+                if (e.type === 'mousedown' && jQuery(e.target).closest('a, button, .water-pill-btn, .scroll-explore-btn').length) return;
+
+                if (jQuery(e.target).closest('.navbar, .glass-box, .hero-content, .main-footer, .water-pill-btn, .scroll-explore-btn, .dino-card').length) return;
 
                 if (!isRippling) {
                     isRippling = true;
-                    requestAnimationFrame(() => {
+                    requestAnimationFrame(function() {
                         var radius = (e.type === 'mousedown') ? 35 : 15;
                         var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
-                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        
+                        water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
                         isRippling = false;
                     });
                 }
             });
 
-            // 3. TRANSICIONES Y ANIMACIONES (¡ESTÁN DE VUELTA! xd)
-            $('.nav a').on('click', function(e) {
+            jQuery('.nav a').on('click', function(e) {
+                if (jQuery(this).attr('target') === '_blank') return;
+                if (jQuery(this).hasClass('active')) return;
                 e.preventDefault(); 
-                const targetUrl = $(this).attr('href');
-                $('body').addClass('page-exit'); 
-                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+                var targetUrl = jQuery(this).attr('href');
+                jQuery('body').addClass('page-exit'); 
+                setTimeout(function() { window.location.href = targetUrl; }, 300); 
             });
 
-            // Este es el motor que hace que las cosas aparezcan al hacer scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) { 
+                    if (entry.isIntersecting) entry.target.classList.add('active'); 
+                });
             }, { threshold: 0.15 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                observer.observe(el);
+            });
         });
 
-        function copiarCorreo() {
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(() => {
-                    const btn = document.getElementById("btn-copy");
-                    if(btn) {
-                        btn.innerHTML = "¡Copiado con éxito!";
-                        btn.style.background = "#00ffff";
-                        btn.style.color = "#000000";
-                        setTimeout(() => {
-                            btn.innerHTML = "Copiar al portapapeles";
-                            btn.style.background = "rgba(0, 255, 255, 0.15)";
-                            btn.style.color = "#00ffff";
-                        }, 2500);
-                    }
-                });
+        /* =========================================================
+           MOTOR DEL MINIJUEGO DINO RUNNER
+           ========================================================= */
+        (function() {
+            var canvas = document.getElementById('dinoCanvas');
+            var ctx = canvas.getContext('2d');
+            var scoreEl = document.getElementById('dinoScore');
+            var highEl = document.getElementById('dinoHigh');
+
+            var gameRunning = false;
+            var gameOver = false;
+            var score = 0;
+            var savedHigh = localStorage.getItem('giomarDinoHigh');
+            var highScore = savedHigh ? parseInt(savedHigh, 10) : 0;
+            highEl.textContent = String(highScore).padStart(4, '0');
+
+            var groundY = 148;
+            var speed = 5.5;
+            var frame = 0;
+
+            var dino = {
+                x: 60,
+                y: groundY - 38,
+                w: 34,
+                h: 38,
+                vy: 0,
+                gravity: 0.68,
+                jumpPower: -12.2,
+                grounded: true
+            };
+
+            var obstacles = [];
+            var clouds = [{ x: 200, y: 35 }, { x: 520, y: 55 }, { x: 740, y: 28 }];
+
+            function resetGame() {
+                score = 0;
+                speed = 5.5;
+                obstacles = [];
+                dino.y = groundY - dino.h;
+                dino.vy = 0;
+                dino.grounded = true;
+                gameOver = false;
+                gameRunning = true;
             }
-        }
+
+            function jump() {
+                if (!gameRunning && !gameOver) {
+                    resetGame();
+                    dino.vy = dino.jumpPower;
+                    dino.grounded = false;
+                } else if (gameOver) {
+                    resetGame();
+                } else if (dino.grounded) {
+                    dino.vy = dino.jumpPower;
+                    dino.grounded = false;
+                }
+            }
+
+            document.getElementById('dinoBox').addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                jump();
+            });
+
+            window.addEventListener('keydown', function(e) {
+                var isJumpKey = (e.code === 'Space') ? true : (e.code === 'ArrowUp');
+                if (isJumpKey) {
+                    var rect = canvas.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        e.preventDefault();
+                        jump();
+                    }
+                }
+            });
+
+            function drawDino(x, y) {
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = 'rgba(0, 255, 255, 0.85)';
+                ctx.shadowBlur = 8;
+
+                ctx.fillRect(x + 14, y, 18, 12);
+                ctx.fillRect(x + 14, y + 12, 14, 4);
+                ctx.fillStyle = '#04121c';
+                ctx.fillRect(x + 18, y + 3, 3, 3);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(x + 6, y + 14, 18, 14);
+                ctx.fillRect(x, y + 16, 6, 8);
+                ctx.fillRect(x - 3, y + 14, 4, 5);
+                ctx.fillRect(x + 24, y + 18, 5, 3);
+
+                var legStep = (gameRunning && dino.grounded) ? Math.floor(frame / 6) % 2 : 0;
+                if (legStep === 0) {
+                    ctx.fillRect(x + 8, y + 28, 5, 10);
+                    ctx.fillRect(x + 17, y + 28, 5, 6);
+                } else {
+                    ctx.fillRect(x + 8, y + 28, 5, 6);
+                    ctx.fillRect(x + 17, y + 28, 5, 10);
+                }
+                ctx.shadowBlur = 0;
+            }
+
+            function drawObstacle(obs) {
+                ctx.fillStyle = '#00ffff';
+                ctx.shadowColor = 'rgba(0, 255, 255, 0.75)';
+                ctx.shadowBlur = 6;
+                ctx.fillRect(obs.x + 5, obs.y, obs.w - 10, obs.h);
+                ctx.fillRect(obs.x, obs.y + 8, 5, 12);
+                ctx.fillRect(obs.x + obs.w - 5, obs.y + 6, 5, 14);
+                ctx.shadowBlur = 0;
+            }
+
+            function update() {
+                frame++;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = 'rgba(0, 255, 255, 0.18)';
+                clouds.forEach(function(c) {
+                    if (gameRunning) c.x -= 0.8;
+                    if (c.x < -50) c.x = canvas.width + 40;
+                    ctx.beginPath();
+                    ctx.roundRect(c.x, c.y, 46, 12, 6);
+                    ctx.fill();
+                });
+
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.35)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(0, groundY);
+                ctx.lineTo(canvas.width, groundY);
+                ctx.stroke();
+
+                if (gameRunning) {
+                    dino.vy += dino.gravity;
+                    dino.y += dino.vy;
+                    if (dino.y >= groundY - dino.h) {
+                        dino.y = groundY - dino.h;
+                        dino.vy = 0;
+                        dino.grounded = true;
+                    }
+
+                    var canSpawn = (obstacles.length === 0) ? true : ((canvas.width - obstacles[obstacles.length - 1].x) > (240 + Math.random() * 220));
+                    if (canSpawn) {
+                        if (Math.random() < 0.045) {
+                            var h = 26 + Math.floor(Math.random() * 14);
+                            obstacles.push({
+                                x: canvas.width + 20,
+                                y: groundY - h,
+                                w: 20,
+                                h: h
+                            });
+                        }
+                    }
+
+                    for (var i = obstacles.length - 1; i >= 0; i--) {
+                        var o = obstacles[i];
+                        o.x -= speed;
+                        drawObstacle(o);
+
+                        if (
+                            dino.x + 6 < o.x + o.w - 3 &&
+                            dino.x + dino.w - 6 > o.x + 3 &&
+                            dino.y + 4 < o.y + o.h &&
+                            dino.y + dino.h > o.y + 4
+                        ) {
+                            gameRunning = false;
+                            gameOver = true;
+                            if (score > highScore) {
+                                highScore = score;
+                                localStorage.setItem('giomarDinoHigh', highScore);
+                                highEl.textContent = String(highScore).padStart(4, '0');
+                            }
+                        }
+
+                        if (o.x + o.w < 0) {
+                            obstacles.splice(i, 1);
+                        }
+                    }
+
+                    if (frame % 5 === 0) {
+                        score++;
+                        scoreEl.textContent = String(score).padStart(4, '0');
+                        if (score % 100 === 0) speed += 0.35;
+                    }
+                } else {
+                    obstacles.forEach(drawObstacle);
+                }
+
+                drawDino(dino.x, dino.y);
+
+                if (!gameRunning && !gameOver) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    ctx.font = '600 15px Inter, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Pulsa ESPACIO o haz CLIC para empezar a correr', canvas.width / 2, 75);
+                } else if (gameOver) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '800 18px Inter, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('¡GAME OVER! Pulsa ESPACIO o CLIC para reintentar', canvas.width / 2, 75);
+                }
+
+                requestAnimationFrame(update);
+            }
+
+            update();
+        })();
     </script>
 </body>
 </html>

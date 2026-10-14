@@ -3,20 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacto de Giomar Huacho - Sistemas Microinformáticos y Redes.">
     <title>Contacto | Giomar Huacho</title>
+    
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        html { background-color: #050b14 !important; }
-        body { animation: none !important; background-color: transparent !important; }
-        main { animation: pageFadeIn 0.8s ease-out forwards; }
+        /* 🔥 BASE Y FONDO CIAN IDÉNTICO AL INDEX 🔥 */
+        html { 
+            background-color: #04121c !important; 
+            scroll-behavior: smooth;
+        }
+        body { 
+            animation: none !important; 
+            background-color: transparent !important; 
+            opacity: 1 !important; 
+        }
+        main { 
+            animation: pageFadeIn 0.8s ease-out forwards; 
+        }
+        
         .ripple-background {
-            position: fixed !important; top: 0 !important; left: 0 !important;
-            width: 100vw !important; height: 100vh !important; z-index: -2 !important;
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important;
+            width: 100vw !important; 
+            height: 100vh !important; 
+            z-index: -2 !important;
+            background-image: url('FONDO.jpg') !important; 
             background-size: cover !important; 
-            background-position: top center !important; /* LO AMARILLO xd */
+            background-position: center center !important; 
+            pointer-events: none !important; 
+            transition: opacity 0.5s ease;
+        }
+
+        /* =========================================================
+           1. NAVBAR CON LOGO GSC Y BARRA INFERIOR ANIMADA
+           ========================================================= */
+        .logo {
+            color: #ffffff !important;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.85),
+                0 0 20px rgba(0, 215, 255, 0.5) !important;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 
+                0 0 14px #00ffff,
+                0 0 28px #00d9ff !important;
+        }
+
+        .nav ul li a {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.3s ease, text-shadow 0.3s ease !important;
+        }
+
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 100%;
+            height: 2.5px;
+            background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+            border-radius: 4px;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav ul li a:hover::after,
+        .nav ul li a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav ul li a:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+        }
+
+        /* =========================================================
+           2. TARJETA 3D EN CRISTAL CIAN TRANSPARENTE
+           ========================================================= */
+        .tilt-card {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(6, 28, 42, 0.34) 50%,
+                rgba(0, 215, 255, 0.08) 100%
+            ) !important;
+            backdrop-filter: blur(20px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+            border: 1px solid rgba(0, 255, 255, 0.3) !important;
+            max-width: 800px; 
+            width: 92%; 
+            padding: 55px 50px; 
+            border-radius: 24px; 
+            text-align: center;
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(0, 255, 255, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+            will-change: transform;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .tilt-card:hover {
+            border-color: rgba(0, 255, 255, 0.55) !important;
+            box-shadow: 
+                0 30px 65px rgba(0, 0, 0, 0.55),
+                0 0 38px rgba(0, 255, 255, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+        }
+        
+        .tilt-card h2, 
+        .tilt-card p, 
+        .tilt-card .email-box-premium, 
+        .tilt-card .social-links, 
+        .tilt-card .btn-group {
+            transform: translateZ(35px);
+        }
+
+        /* Título "¡Hola!" con letra cursiva y neón cian igual al index */
+        .contact-title {
+            font-family: 'Pacifico', cursive !important;
+            font-weight: 400 !important;
+            font-size: clamp(3rem, 5.5vw, 4.3rem) !important;
+            color: #ffffff !important;
+            margin: 0 auto 12px auto !important;
+            text-shadow: 
+                0 0 6px #00ffff,
+                0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 28px rgba(0, 230, 255, 0.75),
+                0 0 50px rgba(0, 195, 255, 0.5),
+                0 4px 12px rgba(0, 0, 0, 0.30) !important;
+            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.45));
+            transition: transform 0.35s ease, text-shadow 0.35s ease, filter 0.35s ease;
+        }
+
+        .contact-title:hover {
+            transform: translateZ(42px) scale(1.03);
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 22px #00ffff,
+                0 0 42px rgba(0, 225, 255, 0.9),
+                0 0 70px rgba(0, 195, 255, 0.65) !important;
+            filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.75));
+        }
+
+        .contact-subtitle {
+            color: rgba(255, 255, 255, 0.92) !important;
+            font-size: 1.1rem !important;
+            font-weight: 500;
+            margin-bottom: 15px !important;
+            text-shadow: 
+                0 0 8px rgba(0, 245, 255, 0.45),
+                0 2px 6px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* =========================================================
+           3. CAJA DE CORREO, ICONOS Y BOTONES EN ESTILO CIAN NEÓN
+           ========================================================= */
+        .email-box-premium {
+            border-left: 4px solid #00ffff !important;
+            border-top: 1px solid rgba(0, 255, 255, 0.25);
+            border-right: 1px solid rgba(0, 255, 255, 0.25);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+            background: rgba(4, 20, 32, 0.32) !important;
+            box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 255, 255, 0.08) !important;
+            transition: all 0.35s ease !important;
+        }
+
+        .email-box-premium:hover {
+            border-color: #00ffff !important;
+            box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 255, 255, 0.22) !important;
+        }
+
+        .email-text { 
+            color: #ffffff !important; 
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.45) !important; 
+        }
+
+        .email-icon {
+            color: #00ffff !important;
+            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
+        }
+
+        /* Iconos de redes sociales */
+        .social-icon {
+            background: transparent !important;
+            border: 1px solid rgba(0, 255, 255, 0.35) !important;
+            color: #ffffff !important;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .social-icon:hover {
+            background: rgba(0, 255, 255, 0.14) !important;
+            border-color: #00ffff !important;
+            color: #00ffff !important;
+            transform: translateY(-4px) scale(1.08) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 18px rgba(0, 255, 255, 0.45) !important;
+        }
+
+        /* Botones de acción inferiores */
+        .btn-action {
+            background: transparent !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.38) !important;
+            border-radius: 999px !important;
+            font-weight: 600 !important;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .btn-action.primary { 
+            color: #00ffff !important; 
+            border-color: rgba(0, 255, 255, 0.6) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 14px rgba(0, 255, 255, 0.15);
+        }
+
+        .btn-action:hover,
+        .btn-action.primary:hover { 
+            background: rgba(0, 255, 255, 0.14) !important; 
+            color: #ffffff !important; 
+            border-color: #00ffff !important;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 0 0 22px rgba(0, 255, 255, 0.45) !important; 
+        }
+
+        /* =========================================================
+           4. BOTÓN DE AGUA 100% TRANSPARENTE A LA DERECHA
+           ========================================================= */
+        .water-pill-btn {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 2000;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            height: 36px;
+            padding: 0 15px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .water-pill-btn:hover {
+            background: rgba(0, 255, 255, 0.1) !important;
+            border-color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00ffff;
+            box-shadow: 0 0 8px #00ffff;
+        }
+        .water-pill-btn.off {
+            opacity: 0.5;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .water-pill-btn.off .status-dot {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: none;
         }
     </style>
 </head>
@@ -24,9 +287,15 @@
 
     <div class="ripple-background"></div>
     
+    <!-- Botón transparente a la derecha para el agua -->
+    <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
+        <span class="status-dot"></span>
+        <span class="water-label">Agua</span>
+    </button>
+    
     <header class="navbar">
         <div class="navbar-content">
-            <h1 class="logo">GJC</h1>
+            <h1 class="logo">GSC</h1>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -39,10 +308,9 @@
     </header>
 
     <main class="contact-main">
-        <div class="contact-inner reveal-scale" style="background: transparent !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0,255,255,0.2); max-width: 800px; width: 100%; padding: 60px; border-radius: 24px; text-align: center; box-shadow: none !important;">
-            
-            <h2 style="font-size: 3.5rem; letter-spacing: -1px; color: #00ffff; text-shadow: 0 0 15px rgba(0,255,255,0.4); margin-bottom: 15px;">¡Hola!</h2>
-            <p style="color: rgba(255,255,255,0.7); font-size: 1.15rem; margin-bottom: 10px;">Escribeme si quieres hablar o simplemente jugar a algo</p>
+        <div class="contact-inner tilt-card reveal-scale">
+            <h2 class="title-main contact-title">¡Hola!</h2>
+            <p class="contact-subtitle">Escríbeme si quieres hablar o simplemente jugar a algo</p>
             
             <div class="email-box-premium reveal-left">
                 <span class="email-text" id="correo-texto">giomarhuacho150@gmail.com</span>
@@ -67,53 +335,121 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    
     <script>
-        $(document).ready(function() { 
-            var $water = $('.ripple-background');
-            try { $water.ripples({ resolution: 256, dropRadius: 20, perturbance: 0.02, interactive: false }); } catch (e) { console.log(e); }
+        // 1. Inicialización de Tilt 3D interactivo
+        var tiltCard = document.querySelector(".tilt-card");
+        if (tiltCard && typeof VanillaTilt !== "undefined") {
+            VanillaTilt.init(tiltCard, {
+                max: 10,
+                speed: 500,
+                glare: true,
+                "max-glare": 0.2,
+                "mouse-event-element": window
+            });
+        }
+
+        jQuery(document).ready(function() { 
+            var water = jQuery('.ripple-background');
+            var waterEnabled = localStorage.getItem('waterEffect') !== 'off';
+
+            function initWater() {
+                try { 
+                    water.ripples({ 
+                        resolution: 512, 
+                        dropRadius: 20, 
+                        perturbance: 0.04, 
+                        interactive: false 
+                    }); 
+                } catch (err) { 
+                    console.log(err); 
+                }
+            }
+
+            if (waterEnabled) {
+                initWater();
+            } else {
+                jQuery('#toggle-water').addClass('off').find('.water-label').text('Off');
+            }
+
+            jQuery(window).on('resize', function() { 
+                if (waterEnabled) {
+                    try {
+                        water.ripples('updateSize');
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+            });
             
-            let isRippling = false;
-            $('body').on('mousemove mousedown', function(e) { 
-                if(e.type === 'mousedown' && $(e.target).closest('a, button, .btn-action, .social-icon').length) return;
-                
-                // 🔥 EL ESCUDO 🔥
-                if ($(e.target).closest('.navbar, .contact-inner, .main-footer').length) return;
+            // Botón de activación / desactivación del efecto de agua
+            jQuery('#toggle-water').on('click', function() {
+                waterEnabled = !waterEnabled;
+                if (!waterEnabled) {
+                    localStorage.setItem('waterEffect', 'off');
+                    try { 
+                        water.ripples('destroy'); 
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    jQuery(this).addClass('off').find('.water-label').text('Off');
+                } else {
+                    localStorage.setItem('waterEffect', 'on');
+                    initWater();
+                    jQuery(this).removeClass('off').find('.water-label').text('Agua');
+                }
+            });
+
+            var isRippling = false;
+            jQuery('body').on('mousemove mousedown', function(e) { 
+                if (!waterEnabled) return;
+                if (e.type === 'mousedown' && jQuery(e.target).closest('a, button, .btn-action, .social-icon, .water-pill-btn').length) return;
+                if (jQuery(e.target).closest('.navbar, .tilt-card, .main-footer, .water-pill-btn').length) return;
                 
                 if (!isRippling) {
                     isRippling = true;
-                    requestAnimationFrame(() => {
+                    requestAnimationFrame(function() {
                         var radius = (e.type === 'mousedown') ? 35 : 15;
                         var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
-                        $water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
+                        water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
                         isRippling = false;
                     });
                 }
             });
             
-            $('.nav a').on('click', function(e) {
+            jQuery('.nav a').on('click', function(e) {
+                if (jQuery(this).attr('target') === '_blank') return;
+                if (jQuery(this).hasClass('active')) return;
                 e.preventDefault(); 
-                const targetUrl = $(this).attr('href');
-                $('body').addClass('page-exit'); 
-                setTimeout(() => { window.location.href = targetUrl; }, 300); 
+                var targetUrl = jQuery(this).attr('href');
+                jQuery('body').addClass('page-exit'); 
+                setTimeout(function() { window.location.href = targetUrl; }, 300); 
             });
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) { 
+                    if (entry.isIntersecting) entry.target.classList.add('active'); 
+                });
             }, { threshold: 0.15 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                observer.observe(el);
+            });
         });
 
         function copiarCorreo() {
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(() => {
-                    const btn = document.getElementById("btn-copy");
-                    if(btn) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(function() {
+                    var btn = document.getElementById("btn-copy");
+                    if (btn) {
                         btn.innerHTML = "¡Copiado con éxito!";
-                        btn.style.background = "#00ffff";
-                        btn.style.color = "#000000";
-                        setTimeout(() => {
+                        btn.style.background = "rgba(0, 255, 255, 0.22)";
+                        btn.style.color = "#ffffff";
+                        btn.style.borderColor = "#00ffff";
+                        setTimeout(function() {
                             btn.innerHTML = "Copiar al portapapeles";
-                            btn.style.background = "rgba(0, 255, 255, 0.15)";
+                            btn.style.background = "transparent";
                             btn.style.color = "#00ffff";
                         }, 2500);
                     }
