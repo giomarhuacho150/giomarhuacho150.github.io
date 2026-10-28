@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Pacifico&display=swap');
 
 /* ==========================================================================
-   ESTILOS PREMIUM - GIOMAR HUACHO PORTAFOLIO (V7.0 DEFINITIVO xd 💕)
+   ESTILOS PREMIUM - GIOMAR HUACHO PORTAFOLIO (V7.0 DEFINITIVO)
    ========================================================================== */
 
 * {
@@ -22,7 +22,7 @@
     display: none; /* Desaparece visualmente la barra xd */
 }
 
-/* 🔥 FIX: ESTO MATA LA BARRA HORIZONTAL FEA Y PONE EL FONDO NEGRO POR SI ACASO 🔥 */
+/*  FIX: ESTO MATA LA BARRA HORIZONTAL FEA Y PONE EL FONDO NEGRO POR SI ACASO  */
 html {
     background-color: #050b14;
     overflow-x: hidden;
@@ -39,7 +39,7 @@ body {
    FONDO Y CUERPO PRINCIPAL (SOLUCIÓN DEL CORTE NEGRO)
    ========================================================================== */
 body.water-effect {
-    /* 🔥 EL SECRETO: El cuerpo debe ser 100% transparente para dejar ver el agua fija detrás 🔥 */
+    /*  EL SECRETO: El cuerpo debe ser 100% transparente para dejar ver el agua fija detrás  */
     background-color: transparent !important; 
     background-image: none !important;
     min-height: 100vh;
@@ -47,7 +47,7 @@ body.water-effect {
 }
 
 /* ==========================================================================
-   CAPA FANTASMA PARA EL AGUA (CERO LAG, NO SE CORTA NUNCA xd)
+   CAPA FANTASMA PARA EL AGUA (CERO LAG, NO SE CORTA NUNCA)
    ========================================================================== */
 .ripple-background {
     position: fixed; /* Se queda clavado a la pantalla */
@@ -62,7 +62,7 @@ body.water-effect {
 }
 
 /* ==========================================================================
-   CABECERA INMERSIVA "CABINA ESPACIAL" xd
+   CABECERA INMERSIVA "CABINA ESPACIAL" 
    ========================================================================== */
 .navbar {
     position: fixed;
@@ -99,7 +99,7 @@ body.water-effect {
 }
 
 /* ==========================================================================
-   NAVBAR ULTRA LIMPIA (SIN MARCOS FEOS) xd
+   NAVBAR ULTRA LIMPIA (SIN MARCOS FEOS) 
    ========================================================================== */
 .nav ul { 
     list-style: none; 
@@ -157,10 +157,10 @@ body.water-effect {
 }
 
 /* ==========================================================================
-   ESTILO APPLE "HELLO" PARA EL TÍTULO xd 💕
+   ESTILO APPLE "HELLO" PARA EL TÍTULO
    ========================================================================== */
-/* 🔥 FIX: EVITAR QUE SE SUBRAYE EL TEXTO AL DAR CLICS EN EL AGUA xd 🔥 */
-/* 🔥 FIX: EVITAR QUE SE SUBRAYE EL TEXTO AL DAR CLICS EN EL AGUA xd 🔥 */
+/*  FIX: EVITAR QUE SE SUBRAYE EL TEXTO AL DAR CLICS EN EL AGUA xd  */
+/* FIX: EVITAR QUE SE SUBRAYE EL TEXTO AL DAR CLICS EN EL AGUA xd  */
 body {
     -webkit-user-select: none; /* Chrome, Safari, Opera */
     -moz-user-select: none; /* Firefox */
@@ -188,7 +188,7 @@ body {
     color: #ffffff; 
     margin-bottom: 10px; 
     padding: 10px 20px;
-    animation: smoothNeon 4s ease-in-out infinite alternate; /* 🔥 ANIMACIÓN FLUIDA 🔥 */
+    animation: smoothNeon 4s ease-in-out infinite alternate; /*  ANIMACIÓN FLUIDA  */
 }
 
 /* Efecto de luz mejorado: Sin "transform: scale" para que NO sea tosco xd */
@@ -320,7 +320,7 @@ body {
     display: flex !important;
     flex-direction: column !important; 
     
-    /* 🔥 EL SECRETO: Tono oscuro al 45% de opacidad. Deja ver el agua pero no ciega 🔥 */
+    /*  EL SECRETO: Tono oscuro al 45% de opacidad. Deja ver el agua pero no ciega  */
     background: rgba(10, 15, 25, 0.45) !important; 
     backdrop-filter: blur(16px) !important; /* Desenfoque medio para efecto cristal */
     -webkit-backdrop-filter: blur(16px) !important;
@@ -353,7 +353,7 @@ body {
 .project-description p { margin-bottom: 15px; }
 
 /* ==========================================================================
-   ESTILOS DE CONTACTO Y REDES SOCIALES xd
+   ESTILOS DE CONTACTO Y REDES SOCIALES
    ========================================================================== */
 .contact-main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px 60px 20px; }
 .contact-inner { padding: 50px 40px; text-align: center; max-width: 600px; width: 100%; }
@@ -404,7 +404,7 @@ body {
     .cv-grid-2col { grid-template-columns: 1fr; }
 }
 /* ==========================================================================
-   🔥 MEJORAS V8.0: CV ANCHO, CONTACTOS PREMIUM Y ANIMACIONES xd 🔥
+    MEJORAS V8.0: CV ANCHO, CONTACTOS PREMIUM Y ANIMACIONES xd 
    ========================================================================== */
 
 /* 1. CV MÁS ANCHO Y OPTIMIZADO */
@@ -461,7 +461,7 @@ body {
 .reveal-right.active { opacity: 1; transform: translateX(0); }
 .reveal-scale.active { opacity: 1; transform: scale(1); }
 /* ==========================================================================
-   🔥 V9.1: VITRINA DE INSIGNIAS Y TRANSICIONES SUAVES xd 🔥
+    V9.1: VITRINA DE INSIGNIAS Y TRANSICIONES SUAVES xd 
    ========================================================================== */
 
 /* Animación para cuando te vas de la página (Adiós saltos toscos) */
@@ -470,7 +470,7 @@ body {
     to { opacity: 0; transform: translateY(-20px); }
 }
 .page-exit {
-    animation: pageFadeOut 0.2s ease-in forwards !important; /* 🔥 El doble de rápido xd 🔥 */
+    animation: pageFadeOut 0.2s ease-in forwards !important; /*  El doble de rápido xd  */
 }
 
 /* Vitrina para tus Insignias Oficiales */
@@ -530,7 +530,7 @@ body {
     letter-spacing: 1px;
 }
 /* ==========================================================================
-   🔥 FIX: RESURRECCIÓN DE TU NOMBRE (CLEMENTINE PATCH) xd 💕 🔥
+    FIX: RESURRECCIÓN DE TU NOMBRE (CLEMENTINE PATCH) 
    ========================================================================== */
 
 /* 1. Le devolvemos la animación que habías borrado */
@@ -550,7 +550,7 @@ body {
     animation: fadeUpPro 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 /* ==========================================================================
-   🔥 CAJA DE CERTIFICADO CCNA PREMIUM (FIX GIOMAR) xd 💕 🔥
+    CAJA DE CERTIFICADO CCNA PREMIUM (FIX GIOMAR)
    ========================================================================== */
 .cert-container {
     display: flex; align-items: center; gap: 30px;
@@ -563,7 +563,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* 🔥 AQUÍ ES DONDE SE ARREGLA LA FOTO GIGANTE xd 🔥 */
+/*  AQUÍ ES DONDE SE ARREGLA LA FOTO GIGANTE xd  */
 .cert-image-box {
     flex-shrink: 0; width: 320px; background-color: #ffffff;
     padding: 6px; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.1);
