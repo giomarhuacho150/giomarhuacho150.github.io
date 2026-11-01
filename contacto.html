@@ -1,461 +1,707 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contacto de Giomar Huacho - Sistemas Microinformáticos y Redes.">
-    <title>Contacto | Giomar Huacho</title>
-    
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /*  BASE Y FONDO CIAN IDÉNTICO AL INDEX  */
-        html { 
-            background-color: #04121c !important; 
-            scroll-behavior: smooth;
-        }
-        body { 
-            animation: none !important; 
-            background-color: transparent !important; 
-            opacity: 1 !important; 
-        }
-        main { 
-            animation: pageFadeIn 0.8s ease-out forwards; 
-        }
-        
-        .ripple-background {
-            position: fixed !important; 
-            top: 0 !important; 
-            left: 0 !important;
-            width: 100vw !important; 
-            height: 100vh !important; 
-            z-index: -2 !important;
-            background-image: url('FONDO.jpg') !important; 
-            background-size: cover !important; 
-            background-position: center center !important; 
-            pointer-events: none !important; 
-            transition: opacity 0.5s ease;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Contacto de Giomar Huacho - Sistemas Microinformáticos y Redes." />
+        <title>Contacto | Giomar Huacho</title>
 
-        /* =========================================================
-           1. NAVBAR CON LOGO GSC Y BARRA INFERIOR ANIMADA
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&family=JetBrains+Mono:wght@500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+        <style>
+            /* BASE: ENCAJE PERFECTO EN 1 PANTALLA SIN BAJAR CON EL CURSOR */
+            html {
+                background-color: #04121c !important;
+                scroll-behavior: smooth;
+                overflow-x: hidden !important;
+            }
+            body {
+                animation: none !important;
+                background-color: transparent !important;
+                opacity: 1 !important;
+                overflow-x: hidden !important;
+                min-height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+            }
+
+            /* Sobreescribimos el 100vh de styles.css que empujaba el footer hacia abajo */
+            main.contact-main {
+                animation: pageFadeIn 0.8s ease-out forwards;
+                min-height: 0 !important;
+                flex: 1 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 82px 20px 16px 20px !important;
+            }
+
+            .ripple-background {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: -2 !important;
+                background-image: url("FONDO.jpg") !important;
+                background-size: cover !important;
+                background-position: center center !important;
+                pointer-events: none !important;
+            }
+
+            /* 1. NAVBAR */
+            .logo {
+                color: #ffffff !important;
+                text-shadow:
+                    0 0 10px rgba(0, 255, 255, 0.85),
+                    0 0 20px rgba(0, 215, 255, 0.5) !important;
+                transition:
+                    transform 0.3s ease,
+                    text-shadow 0.3s ease;
+            }
+            .logo:hover {
+                transform: scale(1.05);
+                text-shadow:
+                    0 0 14px #00ffff,
+                    0 0 28px #00d9ff !important;
+            }
+
+            .nav ul li a {
+                position: relative;
+                padding-bottom: 6px;
+                transition:
+                    color 0.3s ease,
+                    text-shadow 0.3s ease !important;
+            }
+            .nav ul li a::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: -2px;
+                width: 100%;
+                height: 2.5px;
+                background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+                border-radius: 4px;
+                transform: translateX(-50%) scaleX(0);
+                transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .nav ul li a:hover::after,
+            .nav ul li a.active::after {
+                transform: translateX(-50%) scaleX(1);
+            }
+            .nav ul li a:hover {
+                color: #00ffff !important;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+            }
+
+            /* =========================================================
+           2. VENTANA 3D CON BORDE RGB AURORA Y CRISTAL PRO
            ========================================================= */
-        .logo {
-            color: #ffffff !important;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 255, 0.85),
-                0 0 20px rgba(0, 215, 255, 0.5) !important;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 
-                0 0 14px #00ffff,
-                0 0 28px #00d9ff !important;
-        }
-
-        .nav ul li a {
-            position: relative;
-            padding-bottom: 6px;
-            transition: color 0.3s ease, text-shadow 0.3s ease !important;
-        }
-
-        .nav ul li a::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -2px;
-            width: 100%;
-            height: 2.5px;
-            background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
-            border-radius: 4px;
-            transform: translateX(-50%) scaleX(0);
-            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .nav ul li a:hover::after,
-        .nav ul li a.active::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .nav ul li a:hover {
-            color: #00ffff !important;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
-        }
-
-        /* =========================================================
-           2. TARJETA 3D EN CRISTAL CIAN TRANSPARENTE
-           ========================================================= */
-        .tilt-card {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(6, 28, 42, 0.34) 50%,
-                rgba(0, 215, 255, 0.08) 100%
-            ) !important;
-            backdrop-filter: blur(20px) saturate(140%) !important;
-            -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
-            border: 1px solid rgba(0, 255, 255, 0.3) !important;
-            max-width: 800px; 
-            width: 92%; 
-            padding: 55px 50px; 
-            border-radius: 24px; 
-            text-align: center;
-            transform-style: preserve-3d;
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.45),
-                0 0 30px rgba(0, 255, 255, 0.08),
-                inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
-            will-change: transform;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .tilt-card:hover {
-            border-color: rgba(0, 255, 255, 0.55) !important;
-            box-shadow: 
-                0 30px 65px rgba(0, 0, 0, 0.55),
-                0 0 38px rgba(0, 255, 255, 0.18),
-                inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-        }
-        
-        .tilt-card h2, 
-        .tilt-card p, 
-        .tilt-card .email-box-premium, 
-        .tilt-card .social-links, 
-        .tilt-card .btn-group {
-            transform: translateZ(35px);
-        }
-
-        /* Título "¡Hola!" con letra cursiva y neón cian igual al index */
-        .contact-title {
-            font-family: 'Pacifico', cursive !important;
-            font-weight: 400 !important;
-            font-size: clamp(3rem, 5.5vw, 4.3rem) !important;
-            color: #ffffff !important;
-            margin: 0 auto 12px auto !important;
-            text-shadow: 
-                0 0 6px #00ffff,
-                0 0 14px rgba(0, 255, 255, 0.9),
-                0 0 28px rgba(0, 230, 255, 0.75),
-                0 0 50px rgba(0, 195, 255, 0.5),
-                0 4px 12px rgba(0, 0, 0, 0.30) !important;
-            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.45));
-            transition: transform 0.35s ease, text-shadow 0.35s ease, filter 0.35s ease;
-        }
-
-        .contact-title:hover {
-            transform: translateZ(42px) scale(1.03);
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 22px #00ffff,
-                0 0 42px rgba(0, 225, 255, 0.9),
-                0 0 70px rgba(0, 195, 255, 0.65) !important;
-            filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.75));
-        }
-
-        .contact-subtitle {
-            color: rgba(255, 255, 255, 0.92) !important;
-            font-size: 1.1rem !important;
-            font-weight: 500;
-            margin-bottom: 15px !important;
-            text-shadow: 
-                0 0 8px rgba(0, 245, 255, 0.45),
-                0 2px 6px rgba(0, 0, 0, 0.4) !important;
-        }
-
-        /* =========================================================
-           3. CAJA DE CORREO, ICONOS Y BOTONES EN ESTILO CIAN NEÓN
-           ========================================================= */
-        .email-box-premium {
-            border-left: 4px solid #00ffff !important;
-            border-top: 1px solid rgba(0, 255, 255, 0.25);
-            border-right: 1px solid rgba(0, 255, 255, 0.25);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.25);
-            background: rgba(4, 20, 32, 0.32) !important;
-            box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 255, 255, 0.08) !important;
-            transition: all 0.35s ease !important;
-        }
-
-        .email-box-premium:hover {
-            border-color: #00ffff !important;
-            box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 255, 255, 0.22) !important;
-        }
-
-        .email-text { 
-            color: #ffffff !important; 
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.45) !important; 
-        }
-
-        .email-icon {
-            color: #00ffff !important;
-            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
-        }
-
-        /* Iconos de redes sociales */
-        .social-icon {
-            background: transparent !important;
-            border: 1px solid rgba(0, 255, 255, 0.35) !important;
-            color: #ffffff !important;
-            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
-        }
-
-        .social-icon:hover {
-            background: rgba(0, 255, 255, 0.14) !important;
-            border-color: #00ffff !important;
-            color: #00ffff !important;
-            transform: translateY(-4px) scale(1.08) !important;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 18px rgba(0, 255, 255, 0.45) !important;
-        }
-
-        /* Botones de acción inferiores */
-        .btn-action {
-            background: transparent !important;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.38) !important;
-            border-radius: 999px !important;
-            font-weight: 600 !important;
-            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
-        }
-
-        .btn-action.primary { 
-            color: #00ffff !important; 
-            border-color: rgba(0, 255, 255, 0.6) !important;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 14px rgba(0, 255, 255, 0.15);
-        }
-
-        .btn-action:hover,
-        .btn-action.primary:hover { 
-            background: rgba(0, 255, 255, 0.14) !important; 
-            color: #ffffff !important; 
-            border-color: #00ffff !important;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 0 0 22px rgba(0, 255, 255, 0.45) !important; 
-        }
-
-        /* =========================================================
-           4. BOTÓN DE AGUA 100% TRANSPARENTE A LA DERECHA
-           ========================================================= */
-        .water-pill-btn {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 2000;
-            background: transparent !important;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            height: 36px;
-            padding: 0 15px;
-            border-radius: 999px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 500;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        .water-pill-btn:hover {
-            background: rgba(0, 255, 255, 0.1) !important;
-            border-color: #00ffff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #00ffff;
-            box-shadow: 0 0 8px #00ffff;
-        }
-        .water-pill-btn.off {
-            opacity: 0.5;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        .water-pill-btn.off .status-dot {
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: none;
-        }
-    </style>
-</head>
-<body class="water-effect">
-
-    <div class="ripple-background"></div>
-    
-    <!-- Botón transparente a la derecha para el agua -->
-    <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
-        <span class="status-dot"></span>
-        <span class="water-label">Agua</span>
-    </button>
-    
-    <header class="navbar">
-        <div class="navbar-content">
-            <h1 class="logo">GSC</h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="cv.html">Curriculum</a></li>
-                    <li><a href="portafolio.html">Portafolio</a></li>
-                    <li><a href="contacto.html" class="active">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="contact-main">
-        <div class="contact-inner tilt-card reveal-scale">
-            <h2 class="title-main contact-title">¡Hola!</h2>
-            <p class="contact-subtitle">Escríbeme si quieres hablar o simplemente jugar a algo</p>
-            
-            <div class="email-box-premium reveal-left">
-                <span class="email-text" id="correo-texto">giomarhuacho150@gmail.com</span>
-                <i class="fas fa-envelope email-icon"></i>
-            </div>
-            
-            <div class="social-links reveal-right">
-                <a href="https://discord.gg/qevqfugp" target="_blank" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
-                <a href="https://youtube.com/@giomarhuacho?si=Xm6kuplZoX2or1DK" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/yommy_dun?igsh=MWRhcjRtMnF2Ym5rNg==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/+34656309215" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            
-            <div class="btn-group reveal">
-                <button id="btn-copy" onclick="copiarCorreo()" class="btn-action primary">Copiar al portapapeles</button>
-                <a href="https://github.com/giomarhuacho150" target="_blank" class="btn-action">Visitar mi GitHub</a>
-            </div>
-        </div>
-    </main>
-
-    <footer class="main-footer" style="position: absolute; bottom: 0; width: 100%;"><p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p></footer>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    
-    <script>
-        // 1. Inicialización de Tilt 3D interactivo
-        var tiltCard = document.querySelector(".tilt-card");
-        if (tiltCard && typeof VanillaTilt !== "undefined") {
-            VanillaTilt.init(tiltCard, {
-                max: 10,
-                speed: 500,
-                glare: true,
-                "max-glare": 0.2,
-                "mouse-event-element": window
-            });
-        }
-
-        jQuery(document).ready(function() { 
-            var water = jQuery('.ripple-background');
-            var waterEnabled = localStorage.getItem('waterEffect') !== 'off';
-
-            function initWater() {
-                try { 
-                    water.ripples({ 
-                        resolution: 512, 
-                        dropRadius: 20, 
-                        perturbance: 0.04, 
-                        interactive: false 
-                    }); 
-                } catch (err) { 
-                    console.log(err); 
+            @keyframes rgbBorderFlow {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
                 }
             }
 
-            if (waterEnabled) {
-                initWater();
-            } else {
-                jQuery('#toggle-water').addClass('off').find('.water-label').text('Off');
+            .tilt-card {
+                position: relative;
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.09) 0%,
+                    rgba(4, 22, 35, 0.56) 50%,
+                    rgba(0, 215, 255, 0.1) 100%
+                ) !important;
+                backdrop-filter: blur(22px) saturate(145%) !important;
+                -webkit-backdrop-filter: blur(22px) saturate(145%) !important;
+                border: 1px solid rgba(0, 255, 255, 0.3) !important;
+                max-width: 720px !important;
+                width: 92%;
+                padding: 38px 44px !important;
+                border-radius: 28px !important;
+                text-align: center;
+                transform-style: preserve-3d;
+                box-shadow:
+                    0 25px 60px rgba(0, 0, 0, 0.5),
+                    0 0 35px rgba(0, 255, 255, 0.08),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.28) !important;
+                will-change: transform;
+                transition:
+                    box-shadow 0.4s ease,
+                    border-color 0.4s ease;
             }
 
-            jQuery(window).on('resize', function() { 
-                if (waterEnabled) {
+            /* Borde RGB Aurora animado */
+            .tilt-card::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 28px;
+                padding: 2px;
+                background: linear-gradient(120deg, #00ffff, #0088ff, #8a2be2, #ff007f, #00ffaa, #00ffff);
+                background-size: 300% 300%;
+                animation: rgbBorderFlow 7s ease infinite;
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0.55;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+            }
+
+            .tilt-card:hover {
+                box-shadow:
+                    0 30px 65px rgba(0, 0, 0, 0.6),
+                    0 0 42px rgba(0, 255, 255, 0.2),
+                    0 0 60px rgba(138, 43, 226, 0.14),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.38) !important;
+            }
+
+            .tilt-card:hover::before {
+                opacity: 1;
+            }
+
+            .tilt-card h2,
+            .tilt-card p,
+            .tilt-card .email-box-premium,
+            .tilt-card .social-links,
+            .tilt-card .btn-group {
+                transform: translateZ(32px);
+            }
+
+            .contact-title {
+                font-family: "Pacifico", cursive !important;
+                font-weight: 400 !important;
+                font-size: clamp(2.8rem, 5vw, 4rem) !important;
+                color: #ffffff !important;
+                margin: 0 auto 8px auto !important;
+                text-shadow:
+                    0 0 6px #00ffff,
+                    0 0 14px rgba(0, 255, 255, 0.9),
+                    0 0 28px rgba(0, 230, 255, 0.75),
+                    0 4px 12px rgba(0, 0, 0, 0.3) !important;
+                filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+                transition: transform 0.35s ease;
+            }
+
+            .contact-subtitle {
+                color: rgba(255, 255, 255, 0.9) !important;
+                font-size: 1.05rem !important;
+                font-weight: 500;
+                margin-bottom: 24px !important;
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+            }
+
+            /* =========================================================
+           3. CAJA DE CORREO INTERACTIVA (CLIC PARA COPIAR)
+           ========================================================= */
+            .email-box-premium {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                max-width: 480px;
+                margin: 0 auto 28px auto !important;
+                padding: 16px 24px !important;
+                border-radius: 16px !important;
+                border-left: 4px solid #00ffff !important;
+                border-top: 1px solid rgba(0, 255, 255, 0.28);
+                border-right: 1px solid rgba(0, 255, 255, 0.28);
+                border-bottom: 1px solid rgba(0, 255, 255, 0.28);
+                background: rgba(3, 16, 26, 0.55) !important;
+                box-shadow:
+                    inset 0 2px 12px rgba(0, 0, 0, 0.4),
+                    0 0 20px rgba(0, 255, 255, 0.08) !important;
+                cursor: pointer;
+                transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+            }
+
+            .email-box-premium:hover {
+                border-color: #00ffff !important;
+                background: rgba(4, 24, 38, 0.72) !important;
+                transform: translateZ(36px) translateY(-2px) !important;
+                box-shadow:
+                    inset 0 2px 12px rgba(0, 0, 0, 0.4),
+                    0 10px 25px rgba(0, 255, 255, 0.22) !important;
+            }
+
+            .email-text {
+                font-family: "JetBrains Mono", monospace !important;
+                font-size: 1.12rem !important;
+                font-weight: 600;
+                color: #ffffff !important;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.45) !important;
+            }
+
+            .email-right-action {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: #00ffff;
+                font-size: 0.78rem;
+                font-weight: 600;
+                background: rgba(0, 255, 255, 0.1);
+                border: 1px solid rgba(0, 255, 255, 0.3);
+                padding: 6px 12px;
+                border-radius: 999px;
+                transition: all 0.3s ease;
+            }
+
+            .email-box-premium:hover .email-right-action {
+                background: rgba(0, 255, 255, 0.22);
+                color: #ffffff;
+                border-color: #00ffff;
+            }
+
+            /* =========================================================
+           4. ICONOS SOCIALES CON TOOLTIPS FLOTANTES
+           ========================================================= */
+            .social-links {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 18px;
+                margin-bottom: 28px !important;
+            }
+
+            .social-icon {
+                position: relative;
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background: rgba(4, 20, 32, 0.42) !important;
+                border: 1px solid rgba(0, 255, 255, 0.38) !important;
+                color: #ffffff !important;
+                font-size: 1.45rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+            }
+
+            .social-icon::after {
+                content: attr(data-label);
+                position: absolute;
+                bottom: calc(100% + 10px);
+                left: 50%;
+                transform: translateX(-50%) translateY(6px);
+                background: rgba(3, 16, 26, 0.92);
+                border: 1px solid rgba(0, 255, 255, 0.5);
+                color: #00ffff;
+                font-size: 0.72rem;
+                font-weight: 700;
+                padding: 4px 10px;
+                border-radius: 999px;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.25s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            }
+
+            .social-icon:hover {
+                background: rgba(0, 255, 255, 0.16) !important;
+                border-color: #00ffff !important;
+                color: #00ffff !important;
+                transform: translateY(-5px) scale(1.08) !important;
+                box-shadow:
+                    0 10px 22px rgba(0, 0, 0, 0.4),
+                    0 0 20px rgba(0, 255, 255, 0.5) !important;
+            }
+
+            .social-icon:hover::after {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            /* 5. BOTONES INFERIORES */
+            .btn-group {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .btn-action {
+                background: rgba(255, 255, 255, 0.04) !important;
+                color: #ffffff !important;
+                border: 1px solid rgba(255, 255, 255, 0.38) !important;
+                border-radius: 999px !important;
+                padding: 12px 28px !important;
+                font-size: 0.95rem;
+                font-weight: 600 !important;
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+                transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+            }
+
+            .btn-action.primary {
+                color: #00ffff !important;
+                border-color: rgba(0, 255, 255, 0.6) !important;
+                background: rgba(0, 255, 255, 0.08) !important;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.45);
+                box-shadow:
+                    0 4px 18px rgba(0, 0, 0, 0.25),
+                    0 0 14px rgba(0, 255, 255, 0.15);
+            }
+
+            .btn-action:hover,
+            .btn-action.primary:hover {
+                background: rgba(0, 255, 255, 0.18) !important;
+                color: #ffffff !important;
+                border-color: #00ffff !important;
+                transform: translateY(-3px) scale(1.03);
+                box-shadow:
+                    0 8px 25px rgba(0, 0, 0, 0.35),
+                    0 0 22px rgba(0, 255, 255, 0.45) !important;
+            }
+
+            /* 6. PIE DE PÁGINA EN CRISTAL SIEMPRE VISIBLE */
+            .main-footer {
+                width: 100%;
+                padding: 18px 6% !important;
+                text-align: center;
+                background: linear-gradient(180deg, rgba(4, 18, 28, 0.35) 0%, rgba(2, 10, 16, 0.78) 100%) !important;
+                backdrop-filter: blur(16px) saturate(140%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+                border-top: 1px solid rgba(0, 255, 255, 0.28) !important;
+                box-shadow:
+                    0 -10px 35px rgba(0, 0, 0, 0.35),
+                    0 0 20px rgba(0, 255, 255, 0.06);
+            }
+
+            .main-footer p {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.82);
+                font-weight: 500;
+                letter-spacing: 0.8px;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            }
+
+            /* 7. BOTÓN DE AGUA */
+            .water-pill-btn {
+                position: fixed;
+                bottom: 16px;
+                right: 22px;
+                z-index: 2000;
+                background: transparent !important;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                color: #ffffff;
+                height: 34px;
+                padding: 0 14px;
+                border-radius: 999px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                font-family: "Inter", sans-serif;
+                font-size: 0.76rem;
+                font-weight: 500;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+                transition: all 0.3s ease;
+            }
+            .water-pill-btn:hover {
+                background: rgba(0, 255, 255, 0.1) !important;
+                border-color: #00ffff;
+                transform: translateY(-2px);
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            }
+            .status-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #00ffff;
+                box-shadow: 0 0 8px #00ffff;
+            }
+            .water-pill-btn.off {
+                opacity: 0.5;
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            .water-pill-btn.off .status-dot {
+                background: rgba(255, 255, 255, 0.4);
+                box-shadow: none;
+            }
+
+            @media (max-width: 640px) {
+                .tilt-card {
+                    padding: 30px 20px !important;
+                }
+                .email-box-premium {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .email-text {
+                    font-size: 0.95rem !important;
+                }
+                .btn-group {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body class="water-effect">
+        <div class="ripple-background"></div>
+
+        <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
+            <span class="status-dot"></span>
+            <span class="water-label">Agua</span>
+        </button>
+
+        <header class="navbar">
+            <div class="navbar-content">
+                <h1 class="logo">GSC</h1>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="cv.html">Curriculum</a></li>
+                        <li><a href="portafolio.html">Portafolio</a></li>
+                        <li><a href="contacto.html" class="active">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="contact-main">
+            <div class="contact-inner tilt-card reveal-scale">
+                <h2 class="title-main contact-title">¡Hola!</h2>
+                <p class="contact-subtitle">Escríbeme si quieres hablar o simplemente jugar a algo</p>
+
+                <!-- Caja de correo con copiado directo al hacer clic -->
+                <div
+                    class="email-box-premium reveal-left"
+                    onclick="copiarCorreo()"
+                    title="Haz clic para copiar mi correo"
+                >
+                    <span class="email-text" id="correo-texto">giomarhuacho150@gmail.com</span>
+                    <span class="email-right-action" id="badge-copy">
+                        <i class="fas fa-copy"></i> <span>Copiar</span>
+                    </span>
+                </div>
+
+                <!-- Iconos con etiquetas flotantes (incluye TikTok) -->
+                <div class="social-links reveal-right">
+                    <a
+                        href="https://discord.gg/qevqfugp"
+                        target="_blank"
+                        class="social-icon"
+                        data-label="Discord"
+                        aria-label="Discord"
+                    >
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a
+                        href="https://youtube.com/@giomarhuacho?si=Xm6kuplZoX2or1DK"
+                        target="_blank"
+                        class="social-icon"
+                        data-label="YouTube"
+                        aria-label="YouTube"
+                    >
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/yommy_dun?igsh=MWRhcjRtMnF2Ym5rNg=="
+                        target="_blank"
+                        class="social-icon"
+                        data-label="Instagram"
+                        aria-label="Instagram"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a
+                        href="https://www.tiktok.com/@tu_usuario"
+                        target="_blank"
+                        class="social-icon"
+                        data-label="TikTok"
+                        aria-label="TikTok"
+                    >
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a
+                        href="https://wa.me/+34656309215"
+                        target="_blank"
+                        class="social-icon"
+                        data-label="WhatsApp"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <div class="btn-group reveal">
+                    <button id="btn-copy" onclick="copiarCorreo()" class="btn-action primary">
+                        <i class="fas fa-check-double"></i> <span>Copiar al portapapeles</span>
+                    </button>
+                    <a href="https://github.com/giomarhuacho150" target="_blank" class="btn-action">
+                        <i class="fab fa-github"></i> <span>Visitar mi GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+        <script>
+            var tiltCard = document.querySelector(".tilt-card");
+            if (tiltCard && typeof VanillaTilt !== "undefined") {
+                VanillaTilt.init(tiltCard, {
+                    max: 7,
+                    speed: 500,
+                    glare: true,
+                    "max-glare": 0.16,
+                    "mouse-event-element": window,
+                });
+            }
+
+            jQuery(document).ready(function () {
+                var water = jQuery(".ripple-background");
+                var waterEnabled = localStorage.getItem("waterEffect") !== "off";
+
+                function initWater() {
                     try {
-                        water.ripples('updateSize');
+                        water.ripples({
+                            resolution: 512,
+                            dropRadius: 20,
+                            perturbance: 0.04,
+                            interactive: false,
+                        });
                     } catch (err) {
                         console.log(err);
                     }
                 }
-            });
-            
-            // Botón de activación / desactivación del efecto de agua
-            jQuery('#toggle-water').on('click', function() {
-                waterEnabled = !waterEnabled;
-                if (!waterEnabled) {
-                    localStorage.setItem('waterEffect', 'off');
-                    try { 
-                        water.ripples('destroy'); 
-                    } catch (err) {
-                        console.log(err);
-                    }
-                    jQuery(this).addClass('off').find('.water-label').text('Off');
-                } else {
-                    localStorage.setItem('waterEffect', 'on');
+
+                if (waterEnabled) {
                     initWater();
-                    jQuery(this).removeClass('off').find('.water-label').text('Agua');
+                } else {
+                    jQuery("#toggle-water").addClass("off").find(".water-label").text("Off");
                 }
+
+                jQuery(window).on("resize", function () {
+                    if (waterEnabled) {
+                        try {
+                            water.ripples("updateSize");
+                        } catch (err) {}
+                    }
+                });
+
+                jQuery("#toggle-water").on("click", function () {
+                    waterEnabled = !waterEnabled;
+                    if (!waterEnabled) {
+                        localStorage.setItem("waterEffect", "off");
+                        try {
+                            water.ripples("destroy");
+                        } catch (err) {}
+                        jQuery(this).addClass("off").find(".water-label").text("Off");
+                    } else {
+                        localStorage.setItem("waterEffect", "on");
+                        initWater();
+                        jQuery(this).removeClass("off").find(".water-label").text("Agua");
+                    }
+                });
+
+                var isRippling = false;
+                jQuery("body").on("mousemove mousedown", function (e) {
+                    if (!waterEnabled) return;
+                    if (
+                        e.type === "mousedown" &&
+                        jQuery(e.target).closest(
+                            "a, button, .btn-action, .social-icon, .water-pill-btn, .email-box-premium",
+                        ).length
+                    )
+                        return;
+                    if (jQuery(e.target).closest(".navbar, .tilt-card, .main-footer, .water-pill-btn").length) return;
+
+                    if (!isRippling) {
+                        isRippling = true;
+                        requestAnimationFrame(function () {
+                            var radius = e.type === "mousedown" ? 35 : 15;
+                            var perturbance = e.type === "mousedown" ? 0.05 : 0.01;
+                            water.ripples("drop", e.clientX, e.clientY, radius, perturbance);
+                            isRippling = false;
+                        });
+                    }
+                });
+
+                jQuery(".nav a").on("click", function (e) {
+                    if (jQuery(this).attr("target") === "_blank") return;
+                    if (jQuery(this).hasClass("active")) return;
+                    e.preventDefault();
+                    var targetUrl = jQuery(this).attr("href");
+                    jQuery("body").addClass("page-exit");
+                    setTimeout(function () {
+                        window.location.href = targetUrl;
+                    }, 300);
+                });
+
+                var observer = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) entry.target.classList.add("active");
+                        });
+                    },
+                    { threshold: 0.12 },
+                );
+
+                document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach(function (el) {
+                    observer.observe(el);
+                });
             });
 
-            var isRippling = false;
-            jQuery('body').on('mousemove mousedown', function(e) { 
-                if (!waterEnabled) return;
-                if (e.type === 'mousedown' && jQuery(e.target).closest('a, button, .btn-action, .social-icon, .water-pill-btn').length) return;
-                if (jQuery(e.target).closest('.navbar, .tilt-card, .main-footer, .water-pill-btn').length) return;
-                
-                if (!isRippling) {
-                    isRippling = true;
-                    requestAnimationFrame(function() {
-                        var radius = (e.type === 'mousedown') ? 35 : 15;
-                        var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
-                        water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
-                        isRippling = false;
+            function copiarCorreo() {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(function () {
+                        var btn = document.getElementById("btn-copy");
+                        var badge = document.getElementById("badge-copy");
+                        if (btn) {
+                            btn.innerHTML = '<i class="fas fa-check"></i> <span>¡Copiado con éxito!</span>';
+                            btn.style.background = "rgba(0, 255, 255, 0.25)";
+                            btn.style.color = "#ffffff";
+                        }
+                        if (badge) {
+                            badge.innerHTML = '<i class="fas fa-check"></i> <span>¡Copiado!</span>';
+                            badge.style.color = "#00ffaa";
+                            badge.style.borderColor = "#00ffaa";
+                        }
+                        setTimeout(function () {
+                            if (btn) {
+                                btn.innerHTML =
+                                    '<i class="fas fa-check-double"></i> <span>Copiar al portapapeles</span>';
+                                btn.style.background = "rgba(0, 255, 255, 0.08)";
+                                btn.style.color = "#00ffff";
+                            }
+                            if (badge) {
+                                badge.innerHTML = '<i class="fas fa-copy"></i> <span>Copiar</span>';
+                                badge.style.color = "#00ffff";
+                                badge.style.borderColor = "rgba(0, 255, 255, 0.3)";
+                            }
+                        }, 2400);
                     });
                 }
-            });
-            
-            jQuery('.nav a').on('click', function(e) {
-                if (jQuery(this).attr('target') === '_blank') return;
-                if (jQuery(this).hasClass('active')) return;
-                e.preventDefault(); 
-                var targetUrl = jQuery(this).attr('href');
-                jQuery('body').addClass('page-exit'); 
-                setTimeout(function() { window.location.href = targetUrl; }, 300); 
-            });
-            
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) { 
-                    if (entry.isIntersecting) entry.target.classList.add('active'); 
-                });
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-
-        function copiarCorreo() {
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText("giomarhuacho150@gmail.com").then(function() {
-                    var btn = document.getElementById("btn-copy");
-                    if (btn) {
-                        btn.innerHTML = "¡Copiado con éxito!";
-                        btn.style.background = "rgba(0, 255, 255, 0.22)";
-                        btn.style.color = "#ffffff";
-                        btn.style.borderColor = "#00ffff";
-                        setTimeout(function() {
-                            btn.innerHTML = "Copiar al portapapeles";
-                            btn.style.background = "transparent";
-                            btn.style.color = "#00ffff";
-                        }, 2500);
-                    }
-                });
             }
-        }
-    </script>
-</body>
+        </script>
+    </body>
 </html>
