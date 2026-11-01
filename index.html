@@ -1,763 +1,968 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Portafolio personal de Giomar Huacho, estudiante de Sistemas Microinformáticos y Redes.">
-    <meta property="og:title" content="Giomar Huacho | Portafolio Personal">
-    <meta property="og:description" content="Especialista en redes, hardware y sistemas. SMIX.">
-    
-    <title>Giomar Huacho | Portafolio Personal</title>
-    
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /*  BASE Y FONDO CIAN ORIGINAL  */
-        html { 
-            background-color: #04121c !important; 
-            scroll-behavior: smooth;
-        }
-        body { 
-            animation: none !important; 
-            background-color: transparent !important; 
-        }
-        
-        main, .profile-section, .dino-section { 
-            animation: pageFadeIn 0.8s ease-out forwards; 
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        .ripple-background {
-            position: fixed !important; 
-            top: 0 !important; 
-            left: 0 !important;
-            width: 100vw !important; 
-            height: 100vh !important; 
-            z-index: -2 !important;
-            background-image: url('FONDO.jpg') !important;
-            background-size: cover !important; 
-            background-position: center center !important; 
-            pointer-events: none !important; 
-        }
+        <meta
+            name="description"
+            content="Portafolio personal de Giomar Huacho - Sistemas Microinformáticos y Redes (SMIX)."
+        />
+        <meta property="og:title" content="Giomar Huacho | Portafolio Personal" />
+        <meta property="og:description" content="Estudiante de SMIX, hardware, redes y ciberseguridad." />
 
-        /* =========================================================
-           1. NAVBAR CON SU DEGRADADO TRANSPARENTE + BARRA INFERIOR
+        <title>Giomar Huacho | Portafolio Personal</title>
+
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+        <style>
+            /* BASE Y FONDO */
+            html {
+                background-color: #04121c !important;
+                scroll-behavior: smooth;
+                overflow-x: hidden !important;
+            }
+            body {
+                animation: none !important;
+                background-color: transparent !important;
+                overflow-x: hidden !important;
+            }
+
+            main,
+            section {
+                animation: pageFadeIn 0.8s ease-out forwards;
+            }
+
+            .ripple-background {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: -2 !important;
+                background-image: url("FONDO.jpg") !important;
+                background-size: cover !important;
+                background-position: center center !important;
+                pointer-events: none !important;
+            }
+
+            /* 1. NAVBAR */
+            .logo {
+                color: #ffffff !important;
+                text-shadow:
+                    0 0 10px rgba(0, 255, 255, 0.85),
+                    0 0 20px rgba(0, 215, 255, 0.5) !important;
+                transition:
+                    transform 0.3s ease,
+                    text-shadow 0.3s ease;
+            }
+            .logo:hover {
+                transform: scale(1.05);
+                text-shadow:
+                    0 0 14px #00ffff,
+                    0 0 28px #00d9ff !important;
+            }
+
+            .nav ul li a {
+                position: relative;
+                padding-bottom: 6px;
+                transition:
+                    color 0.3s ease,
+                    text-shadow 0.3s ease !important;
+            }
+            .nav ul li a::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: -2px;
+                width: 100%;
+                height: 2.5px;
+                background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+                border-radius: 4px;
+                transform: translateX(-50%) scaleX(0);
+                transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .nav ul li a:hover::after,
+            .nav ul li a.active::after {
+                transform: translateX(-50%) scaleX(1);
+            }
+            .nav ul li a:hover {
+                color: #00ffff !important;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
+            }
+
+            /* 2. HERO PORTADA */
+            .hero {
+                position: relative;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+                min-height: 100vh;
+                padding: 0 20px;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                animation: gentleFloat 4.5s ease-in-out infinite alternate;
+            }
+
+            @keyframes gentleFloat {
+                0% {
+                    transform: translateY(0px);
+                }
+                100% {
+                    transform: translateY(-7px);
+                }
+            }
+
+            .title-main {
+                font-family: "Pacifico", cursive !important;
+                font-weight: 400 !important;
+                font-size: clamp(3.4rem, 7vw, 5.8rem) !important;
+                color: #ffffff !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+                text-shadow:
+                    0 0 7px rgba(0, 255, 255, 0.95),
+                    0 0 16px rgba(0, 240, 255, 0.8),
+                    0 0 32px rgba(0, 215, 255, 0.6),
+                    0 4px 12px rgba(0, 0, 0, 0.35) !important;
+                transition:
+                    transform 0.35s ease,
+                    text-shadow 0.35s ease;
+            }
+
+            .title-main:hover {
+                transform: scale(1.02);
+                text-shadow:
+                    0 0 10px #00ffff,
+                    0 0 22px #00ffff,
+                    0 0 42px rgba(0, 225, 255, 0.85) !important;
+            }
+
+            .subtitle-main {
+                color: #ffffff !important;
+                font-weight: 700 !important;
+                font-size: clamp(0.85rem, 1.5vw, 1.1rem) !important;
+                letter-spacing: 5px !important;
+                margin: 12px auto 0 auto !important;
+                text-align: center !important;
+                text-shadow:
+                    0 0 10px rgba(0, 245, 255, 0.65),
+                    0 2px 6px rgba(0, 0, 0, 0.5) !important;
+            }
+
+            /* 3. BOTÓN EXPLORAR */
+            .scroll-explore-btn {
+                position: absolute;
+                bottom: 34px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                color: #ffffff;
+                cursor: pointer;
+                z-index: 5;
+            }
+
+            .explore-pill {
+                padding: 8px 24px;
+                border-radius: 999px;
+                background: rgba(4, 20, 32, 0.35) !important;
+                border: 1px solid rgba(0, 255, 255, 0.5);
+                font-size: 0.76rem;
+                font-weight: 600;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                backdrop-filter: blur(6px);
+                transition: all 0.35s ease;
+            }
+
+            .explore-arrows {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                line-height: 0.5;
+                font-size: 0.85rem;
+                color: #00ffff;
+                animation: arrowFloat 1.8s infinite ease-in-out;
+            }
+            .explore-arrows i:nth-child(2) {
+                opacity: 0.5;
+            }
+
+            .scroll-explore-btn:hover .explore-pill {
+                background: rgba(0, 255, 255, 0.15) !important;
+                border-color: #00ffff;
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            }
+
+            @keyframes arrowFloat {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(6px);
+                }
+            }
+
+            /* 4. CONTENEDOR PRINCIPAL */
+            .home-container {
+                max-width: 1180px;
+                width: 92%;
+                margin: 0 auto;
+                padding-bottom: 100px;
+                display: flex;
+                flex-direction: column;
+                gap: 75px;
+            }
+
+            /* CRISTAL BASE */
+            .cyber-glass {
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.08) 0%,
+                    rgba(5, 24, 38, 0.52) 50%,
+                    rgba(0, 215, 255, 0.09) 100%
+                ) !important;
+                backdrop-filter: blur(20px) saturate(140%) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+                border: 1px solid rgba(0, 255, 255, 0.32) !important;
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.45),
+                    0 0 30px rgba(0, 255, 255, 0.08),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+                border-radius: 24px !important;
+                transition:
+                    transform 0.4s ease,
+                    border-color 0.4s ease,
+                    box-shadow 0.4s ease !important;
+            }
+
+            .cyber-glass:hover {
+                transform: translateY(-5px);
+                border-color: rgba(0, 255, 255, 0.65) !important;
+                box-shadow:
+                    0 25px 60px rgba(0, 0, 0, 0.55),
+                    0 0 35px rgba(0, 255, 255, 0.2),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+            }
+
+            /* 5. SOBRE MÍ */
+            .about-box {
+                padding: 46px 50px;
+                display: flex;
+                align-items: center;
+                gap: 48px;
+                max-width: 980px;
+                margin: 0 auto;
+            }
+
+            .photo-box {
+                width: 270px;
+                height: 270px;
+                flex-shrink: 0;
+                background: transparent !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .photo-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px !important;
+                border: 1.5px solid rgba(0, 255, 255, 0.45) !important;
+                box-shadow:
+                    0 15px 35px rgba(0, 0, 0, 0.5),
+                    0 0 22px rgba(0, 255, 255, 0.18) !important;
+                transition:
+                    transform 0.4s ease,
+                    border-color 0.4s ease !important;
+            }
+
+            .about-box:hover .photo-box img {
+                transform: scale(1.02);
+                border-color: #00ffff !important;
+            }
+
+            .cv-text h2 {
+                font-size: 2.35rem !important;
+                font-weight: 800 !important;
+                color: #ffffff !important;
+                margin-bottom: 16px !important;
+                text-shadow:
+                    0 2px 10px rgba(0, 0, 0, 0.45),
+                    0 0 16px rgba(0, 255, 255, 0.35) !important;
+            }
+
+            .cv-text p {
+                color: rgba(255, 255, 255, 0.92) !important;
+                font-size: 1.05rem !important;
+                line-height: 1.8 !important;
+                margin-bottom: 14px !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+            }
+
+            .cv-text p:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            /* 6. TÍTULO DE SECCIÓN CERTIFICADOS */
+            .section-title-block {
+                text-align: center;
+                margin-bottom: 42px;
+            }
+
+            .section-title-block h2 {
+                font-family: "Pacifico", cursive;
+                font-size: clamp(2.6rem, 5vw, 3.8rem);
+                font-weight: 400;
+                color: #ffffff;
+                text-shadow:
+                    0 0 6px #00ffff,
+                    0 0 18px rgba(0, 255, 255, 0.8),
+                    0 4px 12px rgba(0, 0, 0, 0.4);
+                margin-bottom: 8px;
+            }
+
+            .section-title-block p {
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.88rem;
+                font-weight: 600;
+                letter-spacing: 4px;
+                text-transform: uppercase;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.45);
+            }
+
+            /* =========================================================
+           7. VITRINA GRANDE DE DIPLOMAS E INSIGNIAS (DISEÑO PRO)
            ========================================================= */
-        .logo {
-            color: #ffffff !important;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 255, 0.85),
-                0 0 20px rgba(0, 215, 255, 0.5) !important;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 
-                0 0 14px #00ffff,
-                0 0 28px #00d9ff !important;
-        }
+            .certs-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 38px;
+                align-items: stretch;
+            }
 
-        .nav ul li a {
-            position: relative;
-            padding-bottom: 6px;
-            transition: color 0.3s ease, text-shadow 0.3s ease !important;
-        }
+            .cert-showcase-card {
+                position: relative;
+                background: linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.09) 0%,
+                    rgba(4, 20, 32, 0.62) 55%,
+                    rgba(0, 255, 255, 0.1) 100%
+                );
+                backdrop-filter: blur(22px) saturate(140%);
+                -webkit-backdrop-filter: blur(22px) saturate(140%);
+                border: 1px solid rgba(0, 255, 255, 0.35);
+                border-radius: 26px;
+                padding: 24px 24px 28px 24px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-shadow:
+                    0 25px 55px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(0, 255, 255, 0.08),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    border-color 0.4s ease,
+                    box-shadow 0.4s ease;
+            }
 
-        .nav ul li a::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -2px;
-            width: 100%;
-            height: 2.5px;
-            background: linear-gradient(90deg, transparent, #00ffff, #7ef9ff, #00ffff, transparent);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
-            border-radius: 4px;
-            transform: translateX(-50%) scaleX(0);
-            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+            .cert-showcase-card:hover {
+                transform: translateY(-8px);
+                border-color: #00ffff;
+                box-shadow:
+                    0 32px 65px rgba(0, 0, 0, 0.6),
+                    0 0 42px rgba(0, 255, 255, 0.25),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+            }
 
-        .nav ul li a:hover::after,
-        .nav ul li a.active::after {
-            transform: translateX(-50%) scaleX(1);
-        }
+            /* Botón e imagen del diploma */
+            .cert-open {
+                position: relative;
+                display: block;
+                width: 100%;
+                padding: 8px;
+                background: rgba(255, 255, 255, 0.96);
+                border: 1px solid rgba(0, 255, 255, 0.4);
+                border-radius: 16px;
+                overflow: hidden;
+                cursor: zoom-in;
+                box-shadow: 0 16px 35px rgba(0, 0, 0, 0.4);
+                transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+                transition:
+                    transform 0.2s ease-out,
+                    box-shadow 0.35s ease;
+            }
 
-        .nav ul li a:hover {
-            color: #00ffff !important;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.55);
-        }
+            .cert-open:hover {
+                box-shadow:
+                    0 20px 45px rgba(0, 0, 0, 0.55),
+                    0 0 28px rgba(0, 255, 255, 0.35);
+            }
 
-        /* =========================================================
-           2. PORTADA CON TU LETRA CURSIVA Y NEÓN CIAN
-           ========================================================= */
-        .hero {
-            position: relative;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            text-align: center !important;
-        }
+            .cert-open img {
+                display: block;
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
 
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            animation: gentleFloat 4.5s ease-in-out infinite alternate;
-        }
+            /* Reflejo dinámico al mover el cursor */
+            .cert-open::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(
+                    circle at var(--mx, 50%) var(--my, 50%),
+                    rgba(0, 255, 255, 0.22),
+                    transparent 60%
+                );
+                opacity: 0;
+                transition: opacity 0.3s;
+                pointer-events: none;
+            }
 
-        @keyframes gentleFloat {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-7px); }
-        }
+            .cert-open:hover::after {
+                opacity: 1;
+            }
 
-        .title-main {
-            font-family: 'Pacifico', cursive !important;
-            font-weight: 400 !important;
-            color: #ffffff !important;
-            text-align: center !important;
-            margin: 0 auto !important;
-            text-shadow: 
-                0 0 7px rgba(0, 255, 255, 0.95),
-                0 0 16px rgba(0, 240, 255, 0.80),
-                0 0 32px rgba(0, 215, 255, 0.60),
-                0 0 55px rgba(0, 185, 255, 0.40),
-                0 4px 12px rgba(0, 0, 0, 0.30) !important;
-            transition: transform 0.35s ease, text-shadow 0.35s ease;
-        }
+            /* Etiqueta flotante de "Clic para ampliar" */
+            .zoom-pill {
+                position: absolute;
+                top: 18px;
+                right: 18px;
+                background: rgba(4, 18, 28, 0.82);
+                border: 1px solid rgba(0, 255, 255, 0.5);
+                color: #ffffff;
+                font-size: 0.75rem;
+                font-weight: 600;
+                padding: 6px 13px;
+                border-radius: 999px;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                backdrop-filter: blur(8px);
+                opacity: 0;
+                transform: translateY(-6px);
+                transition: all 0.3s ease;
+                pointer-events: none;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            }
 
-        .title-main:hover {
-            transform: scale(1.02);
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 22px #00ffff,
-                0 0 42px rgba(0, 225, 255, 0.8),
-                0 0 70px rgba(0, 195, 255, 0.55) !important;
-        }
+            .zoom-pill i {
+                color: #00ffff;
+            }
 
-        .subtitle-main {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-            letter-spacing: 5px !important;
-            padding-left: 5px !important;
-            margin: 10px auto 0 auto !important;
-            text-align: center !important;
-            text-shadow: 
-                0 0 8px rgba(0, 245, 255, 0.65),
-                0 0 18px rgba(0, 210, 255, 0.35),
-                0 2px 6px rgba(0, 0, 0, 0.4) !important;
-        }
+            .cert-showcase-card:hover .zoom-pill {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-        /* =========================================================
-           3. BOTÓN "EXPLORAR" CON FONDO 100% TRANSPARENTE
-           ========================================================= */
-        .scroll-explore-btn {
-            position: absolute;
-            bottom: 34px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: #ffffff;
-            cursor: pointer;
-            z-index: 5;
-        }
+            /* Pie de la tarjeta con la Insignia Oficial en grande */
+            .cert-footer-bar {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                margin-top: 22px;
+                padding: 14px 18px;
+                background: rgba(3, 15, 24, 0.55);
+                border: 1px solid rgba(0, 255, 255, 0.22);
+                border-radius: 18px;
+                transition:
+                    border-color 0.35s ease,
+                    background 0.35s ease;
+            }
 
-        .explore-pill {
-            padding: 8px 22px;
-            padding-left: 25px;
-            border-radius: 999px;
-            background: transparent !important;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            font-size: 0.76rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-            transition: all 0.35s ease;
-        }
+            .cert-showcase-card:hover .cert-footer-bar {
+                border-color: rgba(0, 255, 255, 0.5);
+                background: rgba(4, 22, 35, 0.72);
+            }
 
-        .explore-arrows {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            line-height: 0.5;
-            font-size: 0.85rem;
-            color: #00ffff;
-            animation: arrowFloat 1.8s infinite ease-in-out;
-        }
-        .explore-arrows i:nth-child(2) {
-            opacity: 0.5;
-        }
+            .cert-badge-lg {
+                width: 72px;
+                height: 72px;
+                flex-shrink: 0;
+                object-fit: contain;
+                border-radius: 14px;
+                filter: drop-shadow(0 6px 14px rgba(0, 255, 255, 0.3));
+                transition:
+                    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                    filter 0.35s ease;
+            }
 
-        .scroll-explore-btn:hover .explore-pill {
-            background: rgba(0, 255, 255, 0.1) !important;
-            border-color: #00ffff;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.35);
-        }
+            .cert-showcase-card:hover .cert-badge-lg {
+                transform: scale(1.1) rotate(4deg);
+                filter: drop-shadow(0 8px 20px rgba(0, 255, 255, 0.65));
+            }
 
-        @keyframes arrowFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
+            .cert-meta-text {
+                text-align: left;
+                flex: 1;
+            }
 
-        /* =========================================================
-           4. TARJETAS DE CRISTAL CIAN TRANSPARENTE (ADIÓS MARRÓN)
-           ========================================================= */
-        .about-box,
-        .dino-card {
-            /* Cristal limpio que deja pasar el color turquesa del fondo */
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(6, 28, 42, 0.32) 50%,
-                rgba(0, 215, 255, 0.08) 100%
-            ) !important;
-            backdrop-filter: blur(18px) saturate(140%) !important;
-            -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-            border: 1px solid rgba(0, 255, 255, 0.28) !important;
-            box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 255, 255, 0.08),
-                inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
-            border-radius: 24px !important;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
-        }
+            .cert-issuer-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 0.74rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #00ffff;
+                margin-bottom: 4px;
+            }
 
-        .about-box:hover,
-        .dino-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 255, 0.55) !important;
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.5),
-                0 0 35px rgba(0, 255, 255, 0.18),
-                inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-        }
+            .cert-meta-text h3 {
+                margin: 0;
+                color: #ffffff;
+                font-size: 1.15rem;
+                font-weight: 800;
+                line-height: 1.3;
+            }
 
-        /* Quitamos el marco gris/marrón de la foto para que quede limpia */
-        .photo-box {
-            background: transparent !important;
-            padding: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
+            .cert-meta-text p {
+                margin: 5px 0 0;
+                color: rgba(255, 255, 255, 0.72);
+                font-size: 0.84rem;
+                font-weight: 500;
+            }
 
-        .photo-box img {
-            border-radius: 18px !important;
-            border: 1px solid rgba(0, 255, 255, 0.35) !important;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 255, 255, 0.15) !important;
-            transition: transform 0.4s ease, border-color 0.4s ease !important;
-        }
+            /* 8. VISOR LIGHTBOX A PANTALLA COMPLETA */
+            .cert-lightbox {
+                position: fixed;
+                inset: 0;
+                z-index: 3000;
+                display: grid;
+                place-items: center;
+                background: rgba(2, 10, 18, 0.88);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                opacity: 0;
+                pointer-events: none;
+                cursor: zoom-out;
+                transition: opacity 0.3s ease;
+                padding: 24px;
+            }
 
-        .about-box:hover .photo-box img {
-            transform: scale(1.02);
-            border-color: #00ffff !important;
-        }
+            .cert-lightbox.on {
+                opacity: 1;
+                pointer-events: auto;
+            }
 
-        .about-box h2 {
-            color: #ffffff !important;
-            font-weight: 800 !important;
-            text-shadow: 
-                0 0 12px rgba(0, 255, 255, 0.5),
-                0 2px 8px rgba(0, 0, 0, 0.3) !important;
-        }
+            .cert-lightbox img {
+                max-width: min(94vw, 1180px);
+                max-height: 88vh;
+                border-radius: 16px;
+                border: 2px solid rgba(0, 255, 255, 0.55);
+                box-shadow:
+                    0 25px 70px rgba(0, 0, 0, 0.75),
+                    0 0 55px rgba(0, 255, 255, 0.28);
+                transform: scale(0.92);
+                transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
 
-        .about-box p {
-            color: rgba(255, 255, 255, 0.92) !important;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
+            .cert-lightbox.on img {
+                transform: scale(1);
+            }
 
-        /* =========================================================
-           5. MINIJUEGO DINO RUNNER INTEGRADO EN CRISTAL TRANSPARENTE
-           ========================================================= */
-        .dino-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 0 20px 80px 20px;
-        }
+            .lightbox-close-hint {
+                position: fixed;
+                top: 26px;
+                right: 32px;
+                background: rgba(4, 20, 32, 0.8);
+                border: 1px solid rgba(0, 255, 255, 0.45);
+                color: #ffffff;
+                padding: 8px 18px;
+                border-radius: 999px;
+                font-size: 0.82rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
 
-        .dino-card {
-            max-width: 900px;
-            width: 100%;
-            padding: 28px 34px;
-            text-align: center;
-        }
+            /* 9. PIE DE PÁGINA EN CRISTAL CIAN */
+            .main-footer {
+                width: 100%;
+                padding: 28px 6%;
+                text-align: center;
+                background: linear-gradient(180deg, rgba(4, 18, 28, 0.35) 0%, rgba(2, 10, 16, 0.78) 100%) !important;
+                backdrop-filter: blur(16px) saturate(140%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+                border-top: 1px solid rgba(0, 255, 255, 0.28) !important;
+                box-shadow:
+                    0 -10px 35px rgba(0, 0, 0, 0.35),
+                    0 0 20px rgba(0, 255, 255, 0.06);
+                position: relative;
+            }
 
-        .dino-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+            .main-footer p {
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.82);
+                font-weight: 500;
+                letter-spacing: 0.8px;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            }
 
-        .dino-title {
-            color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.45);
-        }
+            /* 10. BOTÓN DE AGUA */
+            .water-pill-btn {
+                position: fixed;
+                bottom: 22px;
+                right: 22px;
+                z-index: 2000;
+                background: transparent !important;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                color: #ffffff;
+                height: 36px;
+                padding: 0 15px;
+                border-radius: 999px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                font-family: "Inter", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 500;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+                transition: all 0.3s ease;
+            }
+            .water-pill-btn:hover {
+                background: rgba(0, 255, 255, 0.1) !important;
+                border-color: #00ffff;
+                transform: translateY(-2px);
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            }
+            .status-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #00ffff;
+                box-shadow: 0 0 8px #00ffff;
+            }
+            .water-pill-btn.off {
+                opacity: 0.5;
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            .water-pill-btn.off .status-dot {
+                background: rgba(255, 255, 255, 0.4);
+                box-shadow: none;
+            }
 
-        .dino-score-board {
-            font-family: monospace;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #ffffff;
-            background: transparent;
-            padding: 6px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            letter-spacing: 1px;
-        }
+            /* RESPONSIVE */
+            @media (max-width: 960px) {
+                .about-box {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 34px 26px;
+                }
+                .certs-grid {
+                    grid-template-columns: 1fr;
+                    max-width: 640px;
+                    margin: 0 auto;
+                }
+            }
+        </style>
+    </head>
 
-        .dino-canvas-wrapper {
-            position: relative;
-            width: 100%;
-            background: rgba(0, 15, 25, 0.15);
-            border: 1px solid rgba(0, 255, 255, 0.22);
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            user-select: none;
-        }
+    <body class="water-effect">
+        <div class="ripple-background"></div>
 
-        #dinoCanvas {
-            width: 100%;
-            height: 180px;
-            display: block;
-        }
+        <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
+            <span class="status-dot"></span>
+            <span class="water-label">Agua</span>
+        </button>
 
-        .dino-hint {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.82rem;
-            margin-top: 12px;
-            margin-bottom: 0;
-        }
-
-        /* =========================================================
-           6. BOTÓN DE AGUA 100% TRANSPARENTE A LA DERECHA
-           ========================================================= */
-        .water-pill-btn {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 2000;
-            background: transparent !important;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            height: 36px;
-            padding: 0 15px;
-            border-radius: 999px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 500;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        .water-pill-btn:hover {
-            background: rgba(0, 255, 255, 0.1) !important;
-            border-color: #00ffff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #00ffff;
-            box-shadow: 0 0 8px #00ffff;
-        }
-        .water-pill-btn.off {
-            opacity: 0.5;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        .water-pill-btn.off .status-dot {
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: none;
-        }
-    </style>
-</head>
-
-<body class="water-effect">
-
-    <div class="ripple-background"></div>
-
-    <!-- Botón transparente a la derecha para el agua -->
-    <button id="toggle-water" class="water-pill-btn" title="Activar/Desactivar efecto agua">
-        <span class="status-dot"></span>
-        <span class="water-label">Agua</span>
-    </button>
-
-    <header class="navbar">
-        <div class="navbar-content">
-            <h1 class="logo">GSC</h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="cv.html">Curriculum</a></li>
-                    <li><a href="portafolio.html">Portafolio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="hero">
-        <div class="hero-content">
-            <h1 class="title-main reveal">Giomar Huacho</h1>
-            <p class="subtitle-main reveal" style="transition-delay: 0.2s;">PORTAFOLIO PERSONAL</p>
-        </div>
-
-        <a href="#sobre-mi" class="scroll-explore-btn">
-            <span class="explore-pill">Explorar</span>
-            <span class="explore-arrows">
-                <i class="fas fa-chevron-down"></i>
-                <i class="fas fa-chevron-down"></i>
-            </span>
-        </a>
-    </main>
-
-    <!-- TARJETA SOBRE MÍ EN CRISTAL CIAN TRANSPARENTE -->
-    <section id="sobre-mi" class="profile-section" style="padding-bottom: 35px;">
-        <div class="glass-box about-box reveal">
-            <div class="photo-box">
-                <img src="Giomar123.jpg" alt="Foto de Giomar">
+        <header class="navbar">
+            <div class="navbar-content">
+                <h1 class="logo">GSC</h1>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="cv.html">Curriculum</a></li>
+                        <li><a href="portafolio.html">Portafolio</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="cv-text">
-                <h2>Sobre mí</h2>
-                <p>¡Hola! Soy estudiante de Sistemas Microinformáticos y Redes (SMIX) en el Instituto Provençana. Me considero una persona proactiva, analítica y profundamente autodidacta.</p>
-                <p>Mis áreas de mayor interés son la administración de sistemas operativos, el diagnóstico de hardware y la arquitectura de redes, destacando en el diseño, segmentación y resolución de incidencias en entornos Cisco y Linux. Disfruto enfrentándome a retos técnicos complejos y optimizando la infraestructura para garantizar la máxima eficiencia.</p>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- MINIJUEGO DINO RUNNER EN CRISTAL CIAN TRANSPARENTE -->
-    <section class="dino-section">
-        <div class="glass-box dino-card reveal">
-            <div class="dino-header">
-                <h3 class="dino-title"><i class="fas fa-gamepad" style="color: #00ffff;"></i> Dino Runner</h3>
-                <div class="dino-score-board">
-                    PUNTOS: <span id="dinoScore">0000</span> &nbsp;|&nbsp; RÉCORD: <span id="dinoHigh">0000</span>
+        <!-- PORTADA PRINCIPAL -->
+        <main class="hero">
+            <div class="hero-content">
+                <h1 class="title-main reveal">Giomar Huacho</h1>
+                <p class="subtitle-main reveal" style="transition-delay: 0.15s">PORTAFOLIO PERSONAL</p>
+            </div>
+
+            <a href="#sobre-mi" class="scroll-explore-btn">
+                <span class="explore-pill">Explorar</span>
+                <span class="explore-arrows">
+                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </a>
+        </main>
+
+        <!-- CONTENEDOR CENTRAL -->
+        <div class="home-container">
+            <!-- 1. SECCIÓN SOBRE MÍ -->
+            <section id="sobre-mi" style="padding-top: 40px">
+                <div class="cyber-glass about-box reveal">
+                    <div class="photo-box">
+                        <img src="Giomar123.jpg" alt="Foto de Giomar Huacho" />
+                    </div>
+                    <div class="cv-text">
+                        <h2>Sobre mí</h2>
+                        <p>
+                            ¡Hola! Actualmente estudio Sistemas Microinformáticos y Redes (SMIX) en el Institut
+                            Provençana y realizo mis prácticas en el área técnica de Life Informática, donde pruebo
+                            hardware en banco de pruebas y diagnostico componentes.
+                        </p>
+                        <p>
+                            Me gusta aprender sobre redes Cisco, administración en Linux, ciberseguridad y crear mis
+                            propias herramientas con código. Fuera de la pantalla dedico mi tiempo libre a tocar el
+                            piano, jugar al ajedrez y practicar golf.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="dino-canvas-wrapper" id="dinoBox">
-                <canvas id="dinoCanvas" width="820" height="180"></canvas>
-            </div>
-            
-            <p class="dino-hint">Pulsa <strong>Espacio</strong> o haz <strong>Clic</strong> dentro del cuadro para saltar</p>
+            </section>
+
+            <!-- 2. CERTIFICADOS E INSIGNIAS DESTACADOS -->
+            <section id="certificaciones">
+                <div class="section-title-block reveal">
+                    <h2>Certificados e Insignias</h2>
+                    <p>FORMACIÓN VERIFICADA POR CISCO NETWORKING ACADEMY</p>
+                </div>
+
+                <div class="certs-grid reveal">
+                    <!-- CERTIFICADO 1 -->
+                    <article class="cert-showcase-card">
+                        <button class="cert-open" type="button" aria-label="Ampliar certificado CCNA">
+                            <span class="zoom-pill"><i class="fas fa-magnifying-glass-plus"></i> Ver en grande</span>
+                            <img
+                                src="Certificado.jpg"
+                                alt="Certificado Cisco: CCNA Introducción a las redes"
+                                loading="lazy"
+                            />
+                        </button>
+                        <div class="cert-footer-bar">
+                            <img class="cert-badge-lg" src="Insignia.png" alt="Insignia Cisco Learn-A-Thon 2026" />
+                            <div class="cert-meta-text">
+                                <span class="cert-issuer-tag"
+                                    ><i class="fas fa-certificate"></i> Cisco Networking Academy</span
+                                >
+                                <h3>CCNA: Introducción a las redes</h3>
+                                <p>Institut Provençana · 15 jun 2026</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CERTIFICADO 2 -->
+                    <article class="cert-showcase-card">
+                        <button class="cert-open" type="button" aria-label="Ampliar certificado Ciberseguridad">
+                            <span class="zoom-pill"><i class="fas fa-magnifying-glass-plus"></i> Ver en grande</span>
+                            <img
+                                src="juniorciber.jpg"
+                                alt="Certificado Cisco: Carrera Profesional de Analista Junior en Ciberseguridad"
+                                loading="lazy"
+                            />
+                        </button>
+                        <div class="cert-footer-bar">
+                            <img
+                                class="cert-badge-lg"
+                                src="Insignia2.png"
+                                alt="Insignia Cisco Junior Cybersecurity Analyst Career Path"
+                            />
+                            <div class="cert-meta-text">
+                                <span class="cert-issuer-tag"
+                                    ><i class="fas fa-shield-halved"></i> Cisco Verified Path</span
+                                >
+                                <h3>Analista Junior en Ciberseguridad</h3>
+                                <p>Cisco Networking Academy · 31 oct 2026</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <footer class="main-footer"><p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p></footer>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
-    
-    <script>
-        jQuery(document).ready(function() { 
-            var water = jQuery('.ripple-background');
-            var waterEnabled = localStorage.getItem('waterEffect') !== 'off';
+        <footer class="main-footer">
+            <p>Esta Página Web fue creada con Visual Studio Code por Giomar Huacho</p>
+        </footer>
 
-            function initWater() {
-                try {
-                    water.ripples({ 
-                        resolution: 512, 
-                        dropRadius: 20, 
-                        perturbance: 0.04, 
-                        interactive: false 
-                    }); 
-                } catch (e) { console.log(e); }
-            }
+        <!-- VISOR A PANTALLA COMPLETA -->
+        <div class="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificado ampliado">
+            <span class="lightbox-close-hint"><i class="fas fa-xmark"></i> Clic o ESC para cerrar</span>
+            <img alt="" />
+        </div>
 
-            if (waterEnabled) {
-                initWater();
-            } else {
-                jQuery('#toggle-water').addClass('off').find('.water-label').text('Off');
-            }
-            
-            jQuery(window).on('resize', function() {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+
+        <script>
+            jQuery(document).ready(function () {
+                var water = jQuery(".ripple-background");
+                var waterEnabled = localStorage.getItem("waterEffect") !== "off";
+
+                function initWater() {
+                    try {
+                        water.ripples({
+                            resolution: 512,
+                            dropRadius: 20,
+                            perturbance: 0.04,
+                            interactive: false,
+                        });
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+
                 if (waterEnabled) {
-                    try { water.ripples('updateSize'); } catch (e) {}
-                }
-            });
-
-            jQuery('#toggle-water').on('click', function() {
-                waterEnabled = !waterEnabled;
-                if (!waterEnabled) {
-                    localStorage.setItem('waterEffect', 'off');
-                    try { water.ripples('destroy'); } catch(e) {}
-                    jQuery(this).addClass('off').find('.water-label').text('Off');
-                } else {
-                    localStorage.setItem('waterEffect', 'on');
                     initWater();
-                    jQuery(this).removeClass('off').find('.water-label').text('Agua');
+                } else {
+                    jQuery("#toggle-water").addClass("off").find(".water-label").text("Off");
                 }
+
+                jQuery(window).on("resize", function () {
+                    if (waterEnabled) {
+                        try {
+                            water.ripples("updateSize");
+                        } catch (e) {}
+                    }
+                });
+
+                jQuery("#toggle-water").on("click", function () {
+                    waterEnabled = !waterEnabled;
+                    if (!waterEnabled) {
+                        localStorage.setItem("waterEffect", "off");
+                        try {
+                            water.ripples("destroy");
+                        } catch (e) {}
+                        jQuery(this).addClass("off").find(".water-label").text("Off");
+                    } else {
+                        localStorage.setItem("waterEffect", "on");
+                        initWater();
+                        jQuery(this).removeClass("off").find(".water-label").text("Agua");
+                    }
+                });
+
+                var isRippling = false;
+                jQuery("body").on("mousemove mousedown", function (e) {
+                    if (!waterEnabled) return;
+                    if (
+                        e.type === "mousedown" &&
+                        jQuery(e.target).closest(
+                            "a, button, .water-pill-btn, .scroll-explore-btn, .cert-open, .cert-lightbox",
+                        ).length
+                    )
+                        return;
+
+                    /* ESCUDO COMPLETO: Incluye las tarjetas de certificados y el visor para que NO activen el agua */
+                    if (
+                        jQuery(e.target).closest(
+                            ".navbar, .cyber-glass, .hero-content, .main-footer, .water-pill-btn, .scroll-explore-btn, .cert-showcase-card, .cert-open, .cert-lightbox, .section-title-block",
+                        ).length
+                    )
+                        return;
+
+                    if (!isRippling) {
+                        isRippling = true;
+                        requestAnimationFrame(function () {
+                            var radius = e.type === "mousedown" ? 35 : 15;
+                            var perturbance = e.type === "mousedown" ? 0.05 : 0.01;
+                            water.ripples("drop", e.clientX, e.clientY, radius, perturbance);
+                            isRippling = false;
+                        });
+                    }
+                });
+
+                jQuery(".nav a").on("click", function (e) {
+                    if (jQuery(this).attr("target") === "_blank") return;
+                    if (jQuery(this).hasClass("active")) return;
+                    e.preventDefault();
+                    var targetUrl = jQuery(this).attr("href");
+                    jQuery("body").addClass("page-exit");
+                    setTimeout(function () {
+                        window.location.href = targetUrl;
+                    }, 300);
+                });
+
+                var observer = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) entry.target.classList.add("active");
+                        });
+                    },
+                    { threshold: 0.12 },
+                );
+
+                document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach(function (el) {
+                    observer.observe(el);
+                });
             });
 
-            var isRippling = false;
+            /* EFECTO 3D Y LIGHTBOX DE LOS DIPLOMAS */
+            (function () {
+                var lb = document.querySelector(".cert-lightbox");
+                if (!lb) return;
+                var lbImg = lb.querySelector("img");
+                var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-            jQuery('body').on('mousemove mousedown', function(e) { 
-                if (!waterEnabled) return;
-                if (e.type === 'mousedown' && jQuery(e.target).closest('a, button, .water-pill-btn, .scroll-explore-btn').length) return;
+                document.querySelectorAll(".cert-open").forEach(function (btn) {
+                    var img = btn.querySelector("img");
 
-                if (jQuery(e.target).closest('.navbar, .glass-box, .hero-content, .main-footer, .water-pill-btn, .scroll-explore-btn, .dino-card').length) return;
+                    if (!calm) {
+                        btn.addEventListener("pointermove", function (e) {
+                            if (e.pointerType === "touch") return;
+                            var r = btn.getBoundingClientRect();
+                            var x = (e.clientX - r.left) / r.width;
+                            var y = (e.clientY - r.top) / r.height;
+                            btn.style.setProperty("--ry", ((x - 0.5) * 9).toFixed(2) + "deg");
+                            btn.style.setProperty("--rx", ((0.5 - y) * 7).toFixed(2) + "deg");
+                            btn.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+                            btn.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+                        });
+                        btn.addEventListener("pointerleave", function () {
+                            btn.style.removeProperty("--rx");
+                            btn.style.removeProperty("--ry");
+                        });
+                    }
 
-                if (!isRippling) {
-                    isRippling = true;
-                    requestAnimationFrame(function() {
-                        var radius = (e.type === 'mousedown') ? 35 : 15;
-                        var perturbance = (e.type === 'mousedown') ? 0.05 : 0.01;
-                        
-                        water.ripples('drop', e.clientX, e.clientY, radius, perturbance);
-                        isRippling = false;
+                    btn.addEventListener("click", function () {
+                        lbImg.src = img.src;
+                        lbImg.alt = img.alt;
+                        lb.classList.add("on");
                     });
-                }
-            });
-
-            jQuery('.nav a').on('click', function(e) {
-                if (jQuery(this).attr('target') === '_blank') return;
-                if (jQuery(this).hasClass('active')) return;
-                e.preventDefault(); 
-                var targetUrl = jQuery(this).attr('href');
-                jQuery('body').addClass('page-exit'); 
-                setTimeout(function() { window.location.href = targetUrl; }, 300); 
-            });
-
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) { 
-                    if (entry.isIntersecting) entry.target.classList.add('active'); 
-                });
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-
-        /* =========================================================
-           MOTOR DEL MINIJUEGO DINO RUNNER
-           ========================================================= */
-        (function() {
-            var canvas = document.getElementById('dinoCanvas');
-            var ctx = canvas.getContext('2d');
-            var scoreEl = document.getElementById('dinoScore');
-            var highEl = document.getElementById('dinoHigh');
-
-            var gameRunning = false;
-            var gameOver = false;
-            var score = 0;
-            var savedHigh = localStorage.getItem('giomarDinoHigh');
-            var highScore = savedHigh ? parseInt(savedHigh, 10) : 0;
-            highEl.textContent = String(highScore).padStart(4, '0');
-
-            var groundY = 148;
-            var speed = 5.5;
-            var frame = 0;
-
-            var dino = {
-                x: 60,
-                y: groundY - 38,
-                w: 34,
-                h: 38,
-                vy: 0,
-                gravity: 0.68,
-                jumpPower: -12.2,
-                grounded: true
-            };
-
-            var obstacles = [];
-            var clouds = [{ x: 200, y: 35 }, { x: 520, y: 55 }, { x: 740, y: 28 }];
-
-            function resetGame() {
-                score = 0;
-                speed = 5.5;
-                obstacles = [];
-                dino.y = groundY - dino.h;
-                dino.vy = 0;
-                dino.grounded = true;
-                gameOver = false;
-                gameRunning = true;
-            }
-
-            function jump() {
-                if (!gameRunning && !gameOver) {
-                    resetGame();
-                    dino.vy = dino.jumpPower;
-                    dino.grounded = false;
-                } else if (gameOver) {
-                    resetGame();
-                } else if (dino.grounded) {
-                    dino.vy = dino.jumpPower;
-                    dino.grounded = false;
-                }
-            }
-
-            document.getElementById('dinoBox').addEventListener('mousedown', function(e) {
-                e.preventDefault();
-                jump();
-            });
-
-            window.addEventListener('keydown', function(e) {
-                var isJumpKey = (e.code === 'Space') ? true : (e.code === 'ArrowUp');
-                if (isJumpKey) {
-                    var rect = canvas.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        e.preventDefault();
-                        jump();
-                    }
-                }
-            });
-
-            function drawDino(x, y) {
-                ctx.fillStyle = '#ffffff';
-                ctx.shadowColor = 'rgba(0, 255, 255, 0.85)';
-                ctx.shadowBlur = 8;
-
-                ctx.fillRect(x + 14, y, 18, 12);
-                ctx.fillRect(x + 14, y + 12, 14, 4);
-                ctx.fillStyle = '#04121c';
-                ctx.fillRect(x + 18, y + 3, 3, 3);
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(x + 6, y + 14, 18, 14);
-                ctx.fillRect(x, y + 16, 6, 8);
-                ctx.fillRect(x - 3, y + 14, 4, 5);
-                ctx.fillRect(x + 24, y + 18, 5, 3);
-
-                var legStep = (gameRunning && dino.grounded) ? Math.floor(frame / 6) % 2 : 0;
-                if (legStep === 0) {
-                    ctx.fillRect(x + 8, y + 28, 5, 10);
-                    ctx.fillRect(x + 17, y + 28, 5, 6);
-                } else {
-                    ctx.fillRect(x + 8, y + 28, 5, 6);
-                    ctx.fillRect(x + 17, y + 28, 5, 10);
-                }
-                ctx.shadowBlur = 0;
-            }
-
-            function drawObstacle(obs) {
-                ctx.fillStyle = '#00ffff';
-                ctx.shadowColor = 'rgba(0, 255, 255, 0.75)';
-                ctx.shadowBlur = 6;
-                ctx.fillRect(obs.x + 5, obs.y, obs.w - 10, obs.h);
-                ctx.fillRect(obs.x, obs.y + 8, 5, 12);
-                ctx.fillRect(obs.x + obs.w - 5, obs.y + 6, 5, 14);
-                ctx.shadowBlur = 0;
-            }
-
-            function update() {
-                frame++;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = 'rgba(0, 255, 255, 0.18)';
-                clouds.forEach(function(c) {
-                    if (gameRunning) c.x -= 0.8;
-                    if (c.x < -50) c.x = canvas.width + 40;
-                    ctx.beginPath();
-                    ctx.roundRect(c.x, c.y, 46, 12, 6);
-                    ctx.fill();
                 });
 
-                ctx.strokeStyle = 'rgba(0, 255, 255, 0.35)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(0, groundY);
-                ctx.lineTo(canvas.width, groundY);
-                ctx.stroke();
-
-                if (gameRunning) {
-                    dino.vy += dino.gravity;
-                    dino.y += dino.vy;
-                    if (dino.y >= groundY - dino.h) {
-                        dino.y = groundY - dino.h;
-                        dino.vy = 0;
-                        dino.grounded = true;
-                    }
-
-                    var canSpawn = (obstacles.length === 0) ? true : ((canvas.width - obstacles[obstacles.length - 1].x) > (240 + Math.random() * 220));
-                    if (canSpawn) {
-                        if (Math.random() < 0.045) {
-                            var h = 26 + Math.floor(Math.random() * 14);
-                            obstacles.push({
-                                x: canvas.width + 20,
-                                y: groundY - h,
-                                w: 20,
-                                h: h
-                            });
-                        }
-                    }
-
-                    for (var i = obstacles.length - 1; i >= 0; i--) {
-                        var o = obstacles[i];
-                        o.x -= speed;
-                        drawObstacle(o);
-
-                        if (
-                            dino.x + 6 < o.x + o.w - 3 &&
-                            dino.x + dino.w - 6 > o.x + 3 &&
-                            dino.y + 4 < o.y + o.h &&
-                            dino.y + dino.h > o.y + 4
-                        ) {
-                            gameRunning = false;
-                            gameOver = true;
-                            if (score > highScore) {
-                                highScore = score;
-                                localStorage.setItem('giomarDinoHigh', highScore);
-                                highEl.textContent = String(highScore).padStart(4, '0');
-                            }
-                        }
-
-                        if (o.x + o.w < 0) {
-                            obstacles.splice(i, 1);
-                        }
-                    }
-
-                    if (frame % 5 === 0) {
-                        score++;
-                        scoreEl.textContent = String(score).padStart(4, '0');
-                        if (score % 100 === 0) speed += 0.35;
-                    }
-                } else {
-                    obstacles.forEach(drawObstacle);
-                }
-
-                drawDino(dino.x, dino.y);
-
-                if (!gameRunning && !gameOver) {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-                    ctx.font = '600 15px Inter, sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Pulsa ESPACIO o haz CLIC para empezar a correr', canvas.width / 2, 75);
-                } else if (gameOver) {
-                    ctx.fillStyle = '#ffffff';
-                    ctx.font = '800 18px Inter, sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('¡GAME OVER! Pulsa ESPACIO o CLIC para reintentar', canvas.width / 2, 75);
-                }
-
-                requestAnimationFrame(update);
-            }
-
-            update();
-        })();
-    </script>
-</body>
+                lb.addEventListener("click", function () {
+                    lb.classList.remove("on");
+                });
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") lb.classList.remove("on");
+                });
+            })();
+        </script>
+    </body>
 </html>
